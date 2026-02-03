@@ -105,7 +105,7 @@ export default function InvitationLanding({
 
         {/* Envelope - Main Interactive Element */}
         <div
-          className={`relative w-full max-w-3xl h-[630px] cursor-pointer transition-all duration-700 ${isOpening ? 'animate-pulse' : ''
+          className={`relative w-full max-w-md h-[450px] cursor-pointer transition-all duration-700 ${isOpening ? 'animate-pulse' : ''
             }`}
           style={{
             perspective: '1200px',
