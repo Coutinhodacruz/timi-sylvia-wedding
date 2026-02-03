@@ -32,10 +32,10 @@ export default function GiftsSection() {
                 {/* Header */}
                 <div className={`text-center mb-16 transition-all duration-700 ${isInView ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
                     <Gift className="w-12 h-12 mx-auto mb-6 text-accent" />
-                    <h2 className="text-4xl md:text-5xl font-serif text-foreground mb-6 font-light">
+                    <h2 className="text-4xl md:text-5xl font-serif text-[#FAF6F0] mb-6 font-light">
                         Gifts & Well Wishes
                     </h2>
-                    <p className="text-muted-foreground font-light max-w-2xl mx-auto">
+                    <p className="text-[#F5D5D5] font-light max-w-2xl mx-auto">
                         Your presence at our celebration is the greatest gift of all. However, if you wish to honor us with a gift, we would be grateful for a contribution to our honeymoon fund.
                     </p>
                 </div>
@@ -51,7 +51,7 @@ export default function GiftsSection() {
                             <h3 className="text-2xl font-serif text-accent font-light">Honeymoon Fund</h3>
                         </div>
 
-                        <p className="text-foreground/80 font-light mb-6 leading-relaxed">
+                        <p className="text-[#FAF6F0]/80 font-light mb-6 leading-relaxed">
                             Help us create unforgettable memories on our honeymoon adventure together.
                         </p>
 
@@ -72,15 +72,15 @@ export default function GiftsSection() {
                             <h3 className="text-2xl font-serif text-accent font-light">E-Transfer</h3>
                         </div>
 
-                        <p className="text-foreground/80 font-light mb-6 leading-relaxed">
+                        <p className="text-[#FAF6F0]/80 font-light mb-6 leading-relaxed">
                             Send your gift directly via Interac e-Transfer.
                         </p>
 
                         <div className="space-y-3">
                             <div className="flex items-center justify-between p-3 bg-black/30 rounded-lg">
-                                <span className="text-sm text-muted-foreground">Email:</span>
+                                <span className="text-sm text-[#F5D5D5]">Email:</span>
                                 <div className="flex items-center gap-2">
-                                    <span className="text-sm text-foreground font-mono">{bankDetails.email}</span>
+                                    <span className="text-sm text-[#FAF6F0] font-mono">{bankDetails.email}</span>
                                     <button
                                         onClick={() => copyToClipboard(bankDetails.email, 'email')}
                                         className="p-1 hover:text-accent transition-colors"
@@ -101,9 +101,9 @@ export default function GiftsSection() {
 
                         <div className="grid md:grid-cols-3 gap-4 mb-6">
                             <div className="flex flex-col items-center p-4 bg-black/30 rounded-lg">
-                                <span className="text-xs text-muted-foreground mb-1">Institution #</span>
+                                <span className="text-xs text-[#F5D5D5] mb-1">Institution #</span>
                                 <div className="flex items-center gap-2">
-                                    <span className="text-lg font-mono text-foreground">{bankDetails.institution}</span>
+                                    <span className="text-lg font-mono text-[#FAF6F0]">{bankDetails.institution}</span>
                                     <button
                                         onClick={() => copyToClipboard(bankDetails.institution, 'institution')}
                                         className="p-1 hover:text-accent transition-colors"
@@ -114,9 +114,9 @@ export default function GiftsSection() {
                             </div>
 
                             <div className="flex flex-col items-center p-4 bg-black/30 rounded-lg">
-                                <span className="text-xs text-muted-foreground mb-1">Transit/Branch #</span>
+                                <span className="text-xs text-[#F5D5D5] mb-1">Transit/Branch #</span>
                                 <div className="flex items-center gap-2">
-                                    <span className="text-lg font-mono text-foreground">{bankDetails.transit}</span>
+                                    <span className="text-lg font-mono text-[#FAF6F0]">{bankDetails.transit}</span>
                                     <button
                                         onClick={() => copyToClipboard(bankDetails.transit, 'transit')}
                                         className="p-1 hover:text-accent transition-colors"
@@ -127,9 +127,9 @@ export default function GiftsSection() {
                             </div>
 
                             <div className="flex flex-col items-center p-4 bg-black/30 rounded-lg">
-                                <span className="text-xs text-muted-foreground mb-1">Account #</span>
+                                <span className="text-xs text-[#F5D5D5] mb-1">Account #</span>
                                 <div className="flex items-center gap-2">
-                                    <span className="text-lg font-mono text-foreground">{bankDetails.account}</span>
+                                    <span className="text-lg font-mono text-[#FAF6F0]">{bankDetails.account}</span>
                                     <button
                                         onClick={() => copyToClipboard(bankDetails.account, 'account')}
                                         className="p-1 hover:text-accent transition-colors"
@@ -140,7 +140,7 @@ export default function GiftsSection() {
                             </div>
                         </div>
 
-                        <p className="text-sm text-muted-foreground text-center font-light">
+                        <p className="text-sm text-[#F5D5D5] text-center font-light">
                             Thank you for your generosity and love 💕
                         </p>
                     </div>
@@ -148,7 +148,7 @@ export default function GiftsSection() {
 
                 {/* Well Wishes Note */}
                 <div className={`mt-12 text-center transition-all duration-700 delay-200 ${isInView ? 'opacity-100' : 'opacity-0'}`}>
-                    <p className="text-muted-foreground font-light text-sm">
+                    <p className="text-[#F5D5D5] font-light text-sm">
                         Leave your well wishes in our <a href="#guestbook" className="text-accent hover:underline">Guestbook</a> section above
                     </p>
                 </div>

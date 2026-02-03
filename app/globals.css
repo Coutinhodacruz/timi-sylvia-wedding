@@ -313,6 +313,15 @@
   }
 }
 
+/* Dark section text utilities for better readability */
+.dark-section-text {
+  color: var(--ivory);
+}
+
+.dark-section-muted {
+  color: var(--blush-pink);
+}
+
 /* Additional animations for enhanced UI */
 @keyframes float-heart {
 

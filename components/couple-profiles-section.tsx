@@ -16,7 +16,7 @@ export default function CoupleProfilesSection() {
         <h2 className={`text-center text-3xl md:text-4xl font-serif text-accent mb-4 font-light transition-all duration-700 ${isInView ? 'opacity-100 scale-100' : 'opacity-0 scale-95'}`}>
           The Couple
         </h2>
-        <p className={`text-center text-muted-foreground font-light mb-16 transition-all duration-700 delay-100 ${isInView ? 'opacity-100' : 'opacity-0'}`}>
+        <p className={`text-center text-[#F5D5D5] font-light mb-16 transition-all duration-700 delay-100 ${isInView ? 'opacity-100' : 'opacity-0'}`}>
           Two hearts, one love, forever blessed
         </p>
 
@@ -35,12 +35,12 @@ export default function CoupleProfilesSection() {
               </div>
             </div>
             <h3 className="text-2xl font-serif text-accent mb-2 font-light">The Groom</h3>
-            <p className="text-xl font-serif text-foreground mb-6 font-light">
+            <p className="text-xl font-serif text-[#FAF6F0] mb-6 font-light">
               Timi Adenipekun
             </p>
-            <div className="space-y-2 text-sm text-muted-foreground">
+            <div className="space-y-2 text-sm text-[#F5D5D5]">
               <p>Son of</p>
-              <p className="text-foreground font-medium">
+              <p className="text-[#FAF6F0] font-medium">
                 Pastor Olubenga Joshua & Olufunke Ruth Adenipekun
               </p>
             </div>
@@ -59,12 +59,12 @@ export default function CoupleProfilesSection() {
               </div>
             </div>
             <h3 className="text-2xl font-serif text-accent mb-2 font-light">The Bride</h3>
-            <p className="text-xl font-serif text-foreground mb-6 font-light">
+            <p className="text-xl font-serif text-[#FAF6F0] mb-6 font-light">
               Sylvia Okonofua
             </p>
-            <div className="space-y-2 text-sm text-muted-foreground">
+            <div className="space-y-2 text-sm text-[#F5D5D5]">
               <p>Daughter of</p>
-              <p className="text-foreground font-medium">
+              <p className="text-[#FAF6F0] font-medium">
                 Sylvester (Late) & Avwerosuo Okonofua
               </p>
             </div>
@@ -78,7 +78,7 @@ export default function CoupleProfilesSection() {
             <span className="text-accent text-2xl">♥</span>
             <div className="h-px w-16 bg-gradient-to-l from-transparent to-accent/50" />
           </div>
-          <p className="text-muted-foreground font-light italic">
+          <p className="text-[#F5D5D5] font-light italic">
             United in love, blessed by God
           </p>
         </div>

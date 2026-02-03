@@ -32,18 +32,18 @@ export default function EventDetailsSection() {
               <Clock className="w-8 h-8 text-accent" />
             </div>
             <h3 className="text-2xl font-serif text-accent mb-2 font-light">Joining Ceremony</h3>
-            <p className="text-sm text-muted-foreground mb-6">Intimate celebration</p>
+            <p className="text-sm text-[#F5D5D5] mb-6">Intimate celebration</p>
 
             <div className="space-y-3 mb-8">
-              <p className="text-3xl font-serif text-foreground font-light">Thursday</p>
+              <p className="text-3xl font-serif text-[#FAF6F0] font-light">Thursday</p>
               <p className="text-2xl text-accent font-medium">July 24th, 2026</p>
-              <p className="text-lg text-foreground/80 font-light">Time TBA</p>
+              <p className="text-lg text-[#FAF6F0]/80 font-light">Time TBA</p>
             </div>
 
-            <div className="flex items-start justify-center gap-2 text-muted-foreground text-sm mb-6">
+            <div className="flex items-start justify-center gap-2 text-[#F5D5D5] text-sm mb-6">
               <MapPin className="w-4 h-4 mt-0.5 text-accent" />
               <div className="text-left">
-                <p className="font-medium text-foreground">Ile Oba-Jesu</p>
+                <p className="font-medium text-[#FAF6F0]">Ile Oba-Jesu</p>
                 <p>12 Donwoods Crescent</p>
                 <p>Whitby, ON, L1R 0N1</p>
               </div>
@@ -65,18 +65,18 @@ export default function EventDetailsSection() {
               <Clock className="w-8 h-8 text-accent" />
             </div>
             <h3 className="text-2xl font-serif text-accent mb-2 font-light">Traditional Ceremony</h3>
-            <p className="text-sm text-muted-foreground mb-6">Intimate celebration</p>
+            <p className="text-sm text-[#F5D5D5] mb-6">Intimate celebration</p>
 
             <div className="space-y-3 mb-8">
-              <p className="text-3xl font-serif text-foreground font-light">Friday</p>
+              <p className="text-3xl font-serif text-[#FAF6F0] font-light">Friday</p>
               <p className="text-2xl text-accent font-medium">July 25th, 2026</p>
-              <p className="text-lg text-foreground/80 font-light">Time TBA</p>
+              <p className="text-lg text-[#FAF6F0]/80 font-light">Time TBA</p>
             </div>
 
-            <div className="flex items-start justify-center gap-2 text-muted-foreground text-sm mb-6">
+            <div className="flex items-start justify-center gap-2 text-[#F5D5D5] text-sm mb-6">
               <MapPin className="w-4 h-4 mt-0.5 text-accent" />
               <div className="text-left">
-                <p className="font-medium text-foreground">Ile Oba-Jesu</p>
+                <p className="font-medium text-[#FAF6F0]">Ile Oba-Jesu</p>
                 <p>12 Donwoods Crescent</p>
                 <p>Whitby, ON, L1R 0N1</p>
               </div>
@@ -101,32 +101,32 @@ export default function EventDetailsSection() {
           </div>
 
           <div className="space-y-6 text-center">
-            <p className="text-foreground font-medium italic text-lg max-w-2xl mx-auto">
+            <p className="text-[#FAF6F0] font-medium italic text-lg max-w-2xl mx-auto">
               "Due to limited space, we kindly ask that ONLY those named on the e-invitation attend. Thank you for your understanding and we look forward to sharing our special moment with you."
             </p>
 
             <div className="grid md:grid-cols-2 gap-4 max-w-2xl mx-auto text-left">
               <div className="flex items-start gap-3 p-3 bg-background/20 rounded-lg">
                 <span className="text-accent text-lg">🔒</span>
-                <span className="text-foreground/90 text-sm">Strictly by invitation only</span>
+                <span className="text-[#FAF6F0]/90 text-sm">Strictly by invitation only</span>
               </div>
               <div className="flex items-start gap-3 p-3 bg-background/20 rounded-lg">
                 <span className="text-accent text-lg">👥</span>
-                <span className="text-foreground/90 text-sm">No plus ones except where stated</span>
+                <span className="text-[#FAF6F0]/90 text-sm">No plus ones except where stated</span>
               </div>
               <div className="flex items-start gap-3 p-3 bg-background/20 rounded-lg">
                 <span className="text-accent text-lg">📵</span>
-                <span className="text-foreground/90 text-sm">No posting pictures online</span>
+                <span className="text-[#FAF6F0]/90 text-sm">No posting pictures online</span>
               </div>
               <div className="flex items-start gap-3 p-3 bg-background/20 rounded-lg">
                 <span className="text-accent text-lg">🎥</span>
-                <span className="text-foreground/90 text-sm">No recordings during ceremonies</span>
+                <span className="text-[#FAF6F0]/90 text-sm">No recordings during ceremonies</span>
               </div>
             </div>
 
             <div className="flex items-center justify-center gap-3 p-4 bg-accent/10 rounded-lg border border-accent/20 max-w-md mx-auto">
               <Plane className="w-5 h-5 text-accent" />
-              <span className="text-foreground/90 text-sm font-medium">Book your flights early (World Cup season)</span>
+              <span className="text-[#FAF6F0]/90 text-sm font-medium">Book your flights early (World Cup season)</span>
             </div>
           </div>
         </div>
@@ -134,10 +134,10 @@ export default function EventDetailsSection() {
         {/* Hotel booking section */}
         <div className={`bg-black/40 rounded-lg p-8 md:p-10 mb-16 text-center transition-all duration-700 delay-200 hover:bg-black/50 border border-accent/10 ${isInView ? 'opacity-100 scale-100' : 'opacity-0 scale-95'}`}>
           <h3 className="text-2xl font-serif text-accent mb-4 font-light">Travel & Accommodation</h3>
-          <p className="text-foreground mb-4 font-light">
+          <p className="text-[#FAF6F0] mb-4 font-light">
             Hotel details will be shared soon.
           </p>
-          <p className="text-muted-foreground text-sm mb-6">
+          <p className="text-[#F5D5D5] text-sm mb-6">
             Booking Deadline: March 31st, 2026
           </p>
           <button className="px-8 py-2 rounded-full bg-accent/50 text-black font-medium text-sm cursor-not-allowed">
