@@ -4,30 +4,34 @@
 @custom-variant dark (&:is(.dark *));
 
 :root {
-  --background: #f5f1ed;
-  --foreground: #3d3d3d;
-  --card: #ffffff;
-  --card-foreground: #3d3d3d;
-  --popover: #ffffff;
-  --popover-foreground: #3d3d3d;
-  --primary: #8b3a3a;
-  --primary-foreground: #f5f1ed;
-  --secondary: #a89080;
-  --secondary-foreground: #f5f1ed;
-  --muted: #d8c9c0;
-  --muted-foreground: #8b7355;
-  --accent: #c9a86b;
-  --accent-foreground: #3d3d3d;
+  /* Wedding Palette: Ivory, Burgundy, Sage, Rose Gold, Blush Pink */
+  --background: #FAF6F0;
+  --foreground: #4A3F35;
+  --card: #FFFFFF;
+  --card-foreground: #4A3F35;
+  --popover: #FFFFFF;
+  --popover-foreground: #4A3F35;
+  --primary: #8B3A3A;
+  --primary-foreground: #FAF6F0;
+  --secondary: #9CAF88;
+  --secondary-foreground: #FFFFFF;
+  --muted: #E8E0D8;
+  --muted-foreground: #8B7355;
+  --accent: #D4A574;
+  --accent-foreground: #4A3F35;
   --destructive: #d9534f;
   --destructive-foreground: #ffffff;
-  --border: #e8ddd5;
+  --border: #E8DDD5;
   --input: #ffffff;
-  --ring: #c9a86b;
-  --burgundy: #8b3a3a;
-  --sage: #a89080;
-  --rose-gold: #c9a86b;
-  --blush-pink: #e8c5c5;
-  --ivory: #f5f1ed;
+  --ring: #D4A574;
+
+  /* Named palette colors for easy access */
+  --ivory: #FAF6F0;
+  --burgundy: #8B3A3A;
+  --sage: #9CAF88;
+  --rose-gold: #D4A574;
+  --blush-pink: #F5D5D5;
+
   --chart-1: oklch(0.646 0.222 41.116);
   --chart-2: oklch(0.6 0.118 184.704);
   --chart-3: oklch(0.398 0.07 227.392);
@@ -307,4 +311,91 @@
   body {
     @apply bg-background text-foreground;
   }
+}
+
+/* Additional animations for enhanced UI */
+@keyframes float-heart {
+
+  0%,
+  100% {
+    transform: translateY(0) rotate(-5deg);
+    opacity: 0.3;
+  }
+
+  50% {
+    transform: translateY(-20px) rotate(5deg);
+    opacity: 0.6;
+  }
+}
+
+@keyframes float-particle {
+
+  0%,
+  100% {
+    transform: translateY(0) translateX(0);
+    opacity: 0.3;
+  }
+
+  50% {
+    transform: translateY(-30px) translateX(10px);
+    opacity: 0.7;
+  }
+}
+
+@keyframes sparkle {
+
+  0%,
+  100% {
+    opacity: 0;
+    transform: scale(0);
+  }
+
+  50% {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+.animate-float-heart {
+  animation: float-heart 4s ease-in-out infinite;
+}
+
+.animate-float-particle {
+  animation: float-particle 5s ease-in-out infinite;
+}
+
+.animate-sparkle {
+  animation: sparkle 2s ease-in-out infinite;
+}
+
+.animate-fade-in {
+  animation: fadeIn 0.3s ease-out forwards;
+}
+
+/* Perspective for 3D effects */
+.perspective {
+  perspective: 1000px;
+}
+
+/* Smooth scroll behavior */
+html {
+  scroll-behavior: smooth;
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--background);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--accent);
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--primary);
 }

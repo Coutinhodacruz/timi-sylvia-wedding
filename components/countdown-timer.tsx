@@ -12,8 +12,8 @@ export default function CountdownTimer() {
 
   useEffect(() => {
     const calculateTime = () => {
-      // Event date: April 4, 2026
-      const eventDate = new Date('2026-04-04T00:00:00').getTime()
+      // Event date: July 24, 2026
+      const eventDate = new Date('2026-07-24T00:00:00').getTime()
       const now = new Date().getTime()
       const difference = eventDate - now
 

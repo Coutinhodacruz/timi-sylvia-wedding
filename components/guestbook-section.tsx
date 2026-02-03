@@ -112,7 +112,7 @@ export default function GuestbookSection() {
   }
 
   return (
-    <section 
+    <section
       ref={ref}
       className="py-20 md:py-32 bg-background px-4 md:px-8"
     >
@@ -123,7 +123,7 @@ export default function GuestbookSection() {
             RSVP
           </h2>
           <p className="text-muted-foreground text-center mb-8 font-light">
-            Please kindly help us prepare everything better by confirming your attendance to our vow renewal event with the following RSVP form, and please note that the RSVP deadline is on January 30.
+            Please kindly help us prepare everything better by confirming your attendance to our celebration with the following RSVP form. RSVP deadline: March 31st, 2026.
           </p>
 
           {submitted && (
