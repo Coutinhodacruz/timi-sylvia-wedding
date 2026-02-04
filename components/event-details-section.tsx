@@ -146,7 +146,7 @@ export default function EventDetailsSection() {
         </div>
 
         {/* Countdown */}
-        <div className={`bg-black/40 rounded-lg p-8 md:p-10 transition-all duration-700 delay-400 hover:bg-black/50 border border-accent/10 ${isInView ? 'opacity-100 scale-100' : 'opacity-0 scale-95'}`}>
+        <div className={`bg-black/40 rounded-lg p-4 md:p-10 transition-all duration-700 delay-400 hover:bg-black/50 border border-accent/10 ${isInView ? 'opacity-100 scale-100' : 'opacity-0 scale-95'}`}>
           <h3 className="text-center text-xl font-serif text-accent mb-4 font-light">Counting Down To Our Special Day</h3>
           <CountdownTimer />
         </div>
