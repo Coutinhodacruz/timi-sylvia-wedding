@@ -87,12 +87,16 @@ export default function InvitationLanding({
           <p className="text-sm tracking-[0.3em] text-accent/80 uppercase font-light animate-fade-in">
             You are invited to celebrate
           </p>
-          <h1 className="text-5xl md:text-7xl font-serif text-primary font-light animate-slide-up">
-            {coupleNames}
-          </h1>
-          <p className="text-2xl md:text-3xl tracking-widest text-accent font-light">
+          <div className="animate-slide-up flex justify-center">
+            <img
+              src="/monogram2.png"
+              alt={coupleNames}
+              className="w-48 h-auto md:w-64 opacity-90"
+            />
+          </div>
+          {/* <p className="text-2xl md:text-3xl tracking-widest text-accent font-light">
             #TSApproved
-          </p>
+          </p> */}
           <div className="flex items-center justify-center gap-4">
             <div className="h-px w-16 bg-gradient-to-r from-transparent to-accent/50" />
             <span className="text-accent text-lg">♥</span>
