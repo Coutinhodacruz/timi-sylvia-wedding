@@ -11,12 +11,21 @@ export default function GallerySection() {
   const { ref, isInView } = useScrollAnimation({ threshold: 0.2, triggerOnce: true })
 
   const images = [
-    { src: '/engagement-5.jpg', alt: 'Timi carrying Sylvia', caption: 'Pure Joy' },
-    { src: '/engagement-4.jpg', alt: 'Sylvia with Will You Marry Me sign', caption: 'The Moment' },
-    { src: '/engagement-2.png', alt: 'The Proposal', caption: 'Will You Marry Me?' },
-    { src: '/engagement-6.png', alt: 'Sylvia with bouquet', caption: 'She Said Yes!' },
-    { src: '/engagement-1.png', alt: 'Champagne celebration', caption: 'Celebrating Love' },
-    { src: '/engagement-3.png', alt: 'Sylvia smiling', caption: 'Forever Begins' },
+    { src: '/gallery-pre-1.png', alt: 'Sylvia & Timi - Artistic Portrait', caption: 'Love in Focus' },
+    { src: '/gallery-pre-2.png', alt: 'Sylvia & Timi - Close Portrait', caption: 'Intimacy' },
+    { src: '/gallery-pre-3.png', alt: 'Sylvia & Timi - Smiling Portrait', caption: 'Radiant Joy' },
+    { src: '/gallery-pre-4.png', alt: 'Sylvia & Timi - Elegant Standing', caption: 'Sophistication' },
+    { src: '/gallery-pre-5.png', alt: 'Sylvia & Timi - Warm Smile', caption: 'Eternal Happiness' },
+    { src: '/gallery-pre-6.png', alt: 'Sylvia & Timi - Expression Grid', caption: 'Moments of Us' },
+    { src: '/gallery-pre-7.png', alt: 'Timi carrying Sylvia', caption: 'Pure Magic' },
+    { src: '/gallery-pre-8.png', alt: 'Two Souls pose', caption: 'Two Souls, One Heart' },
+    { src: '/gallery-pre-9.png', alt: 'Life together pose', caption: 'Building Our Life' },
+    { src: '/gallery-pre-10.png', alt: 'Silhouette Kiss', caption: 'A Lifetime of Kisses' },
+    { src: '/gallery-pre-11.png', alt: 'Sylvia & Timi - Close Embrace', caption: 'Deeply in Love' },
+    { src: '/gallery-pre-12.png', alt: 'Sylvia & Timi - Holding Close', caption: 'In Your Arms' },
+    { src: '/gallery-pre-13.png', alt: 'Traditional Portrait', caption: 'Unity' },
+    { src: '/gallery-pre-14.png', alt: 'Elegant Pose', caption: 'Forever Yours' },
+    { src: '/gallery-pre-15.png', alt: 'Sharing a Smile', caption: 'Love & Laughter' },
   ]
 
   const toggleLike = (idx: number, e: React.MouseEvent) => {

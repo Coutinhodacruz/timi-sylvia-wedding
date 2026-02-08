@@ -10,17 +10,36 @@ export default function ClosingSection() {
     <section
       ref={ref}
       id="closing"
-      className="py-20 md:py-32 bg-black/60 px-4 md:px-8 text-center relative overflow-hidden"
+      className="py-20 md:py-32 bg-gradient-to-t from-black via-black/80 to-primary/20 px-4 md:px-8 text-center relative overflow-hidden"
     >
+      {/* Floating hearts background animation */}
+      <div className="absolute inset-0 overflow-hidden pointer-events-none">
+        {[...Array(10)].map((_, i) => (
+          <Heart
+            key={i}
+            className="absolute text-primary/10 animate-float-heart"
+            style={{
+              left: `${Math.random() * 100}%`,
+              top: `${Math.random() * 100}%`,
+              animationDelay: `${Math.random() * 5}s`,
+              animationDuration: `${4 + Math.random() * 4}s`,
+              fontSize: `${12 + Math.random() * 16}px`,
+            }}
+            size={20 + Math.random() * 20}
+            fill="currentColor"
+          />
+        ))}
+      </div>
+
       {/* Background decoration */}
       <div className="absolute inset-0 pointer-events-none">
-        <div className="absolute top-0 left-1/4 w-64 h-64 bg-accent/5 rounded-full blur-3xl" />
-        <div className="absolute bottom-0 right-1/4 w-64 h-64 bg-accent/5 rounded-full blur-3xl" />
+        <div className="absolute top-0 left-1/4 w-64 h-64 bg-accent/5 rounded-full blur-3xl animate-pulse" />
+        <div className="absolute bottom-0 right-1/4 w-64 h-64 bg-primary/10 rounded-full blur-3xl animate-pulse" style={{ animationDelay: '1s' }} />
       </div>
 
       <div className="max-w-3xl mx-auto relative z-10">
         {/* Quote section */}
-        <h2 className={`text-4xl md:text-5xl font-serif text-[#FAF6F0] mb-8 font-light transition-all duration-700 ${isInView ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
+        <h2 className={`text-4xl md:text-5xl font-serif text-[#FAF6F0] mb-8 font-light transition-all duration-700 hover:scale-105 ${isInView ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
           Our Journey Continues
         </h2>
 
@@ -79,7 +98,7 @@ export default function ClosingSection() {
 
         {/* See you section */}
         <h2 className={`text-3xl md:text-4xl font-serif text-[#FAF6F0] mb-8 font-light transition-all duration-700 delay-500 ${isInView ? 'opacity-100' : 'opacity-0'}`}>
-          See You at Our Big Day!
+          We can't wait to celebrate with you
         </h2>
 
         {/* Contact */}

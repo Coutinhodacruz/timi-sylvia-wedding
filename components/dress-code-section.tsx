@@ -98,9 +98,9 @@ export default function DressCodeSection() {
                             </div>
 
                             {/* What Not to Wear */}
-                            <div className="bg-destructive/10 border border-destructive/30 rounded-lg p-6">
-                                <h4 className="text-lg font-serif text-destructive mb-3 font-light">What Not to Wear</h4>
-                                <p className="text-[#FAF6F0]/80 font-light text-sm">
+                            <div className="bg-black/20 rounded-lg p-6 mt-6">
+                                <h4 className="text-lg font-serif text-muted-foreground mb-3 font-light text-center">Quick Note on Attire</h4>
+                                <p className="text-[#FAF6F0]/70 font-light text-sm text-center max-w-lg mx-auto">
                                     Ladies, please refrain from wearing anything short or any dress with a white base.
                                     It's okay to wear a dress with some white in it, as long as you're not wearing a wedding gown. All will be OK. 😊
                                 </p>
@@ -124,26 +124,41 @@ export default function DressCodeSection() {
                             {/* Color Suggestions */}
                             <div className="bg-background/20 rounded-lg p-6 border border-accent/20 mb-8">
                                 <h4 className="text-xl font-serif text-[#8B3A3A] mb-4 font-light text-center">Suggested Colors</h4>
-                                <div className="flex flex-wrap justify-center gap-4">
-                                    {['Ivory', 'Champagne', 'Taupe', 'Teal', 'Emerald', 'Royal Blue', 'Plum', 'Rust', 'Burnt Orange'].map((color) => (
-                                        <span
-                                            key={color}
-                                            className="px-4 py-2 bg-accent/20 text-[#FAF6F0] rounded-full text-sm font-light border border-accent/30"
-                                        >
-                                            {color}
-                                        </span>
+                                <div className="flex flex-wrap justify-center gap-6">
+                                    {[
+                                        { name: 'Ivory', hex: '#FFFFF0' },
+                                        { name: 'Champagne', hex: '#F7E7CE' },
+                                        { name: 'Chocolate Brown', hex: '#3E2723' },
+                                        { name: 'Taupe', hex: '#483C32' },
+                                        { name: 'Teal', hex: '#008080' },
+                                        { name: 'Emerald', hex: '#50C878' },
+                                        { name: 'Royal Blue', hex: '#4169E1' },
+                                        { name: 'Plum', hex: '#8E4585' },
+                                        { name: 'Rust', hex: '#B7410E' },
+                                        { name: 'Burnt Orange', hex: '#CC5500' }
+                                    ].map((color) => (
+                                        <div key={color.name} className="flex flex-col items-center gap-2">
+                                            <div
+                                                className="w-12 h-12 rounded-full border border-white/20 shadow-lg"
+                                                style={{ backgroundColor: color.hex }}
+                                            />
+                                            <span className="text-xs text-[#FAF6F0] font-light">{color.name}</span>
+                                        </div>
                                     ))}
                                 </div>
                             </div>
 
-                            {/* Colors to Avoid */}
-                            <div className="bg-destructive/10 border border-destructive/30 rounded-lg p-6">
-                                <h4 className="text-lg font-serif text-destructive mb-3 font-light text-center">Colors to Avoid</h4>
+                            {/* Colors to Avoid (Refactored) */}
+                            <div className="bg-black/20 rounded-lg p-6 text-center">
+                                <h4 className="text-lg font-serif text-muted-foreground mb-3 font-light">Colors to Avoid</h4>
+                                <p className="text-[#FAF6F0]/70 font-light text-sm mb-4">
+                                    To keep the aesthetic cohesive, we kindly request avoiding the following shades:
+                                </p>
                                 <div className="flex flex-wrap justify-center gap-3">
                                     {['Red', 'Forest Green', 'Lavender', 'Bright/Neon Colors'].map((color) => (
                                         <span
                                             key={color}
-                                            className="px-4 py-2 bg-destructive/10 text-destructive rounded-full text-sm font-light border border-destructive/20"
+                                            className="px-4 py-2 bg-black/30 text-muted-foreground rounded-full text-sm font-light border border-white/5"
                                         >
                                             {color}
                                         </span>

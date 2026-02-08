@@ -13,10 +13,8 @@ export default function HeroReveal({ onComplete }: HeroRevealProps) {
     const [currentImageIndex, setCurrentImageIndex] = useState(0)
 
     const heroImages = [
-        { src: '/engagement-2.png', alt: 'The Proposal - Timi on One Knee' },
         { src: '/engagement-1.png', alt: 'Sylvia & Timi with Champagne' },
         { src: '/engagement-3.png', alt: 'Sylvia Smiling at Timi' },
-        { src: '/engagement-5.jpg', alt: 'Timi carrying Sylvia', caption: 'Pure Joy' },
         { src: '/engagement-4.jpg', alt: 'Sylvia with Will You Marry Me sign', caption: 'The Moment' },
         { src: '/engagement-6.png', alt: 'Sylvia with bouquet', caption: 'She Said Yes!' },
     ]
@@ -84,35 +82,29 @@ export default function HeroReveal({ onComplete }: HeroRevealProps) {
 
             {/* Main content */}
             <div
-                className={`relative z-10 text-center px-4 max-w-4xl mx-auto transition-all duration-1000 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-12'
+                className={`relative z-10 text-center px-4 max-w-4xl mx-auto transition-all duration-1000 flex flex-col items-center ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-12'
                     }`}
             >
-                {/* Decorative line */}
-                <div className={`flex items-center justify-center gap-4 mb-8 transition-all duration-700 delay-300 ${showContent ? 'opacity-100' : 'opacity-0'
+                {/* Decorative line - Order 1 */}
+                <div className={`flex items-center justify-center gap-4 mb-4 md:mb-8 transition-all duration-700 delay-300 order-1 ${showContent ? 'opacity-100' : 'opacity-0'
                     }`}>
-                    <div className="h-px w-16 bg-gradient-to-r from-transparent to-accent" />
-                    <span className="text-accent text-2xl">♥</span>
-                    <div className="h-px w-16 bg-gradient-to-l from-transparent to-accent" />
+                    <div className="h-px w-10 md:w-16 bg-gradient-to-r from-transparent to-accent" />
+                    <span className="text-accent text-xl md:text-2xl">♥</span>
+                    <div className="h-px w-10 md:w-16 bg-gradient-to-l from-transparent to-accent" />
                 </div>
 
-                {/* Couple names */}
-                <h1 className={`text-5xl md:text-7xl lg:text-8xl font-serif text-white mb-6 tracking-wide transition-all duration-700 delay-500 ${showContent ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
+                {/* Couple names - Order 2 (Leading the hierarchy) */}
+                <h1 className={`text-5xl md:text-7xl lg:text-8xl font-serif text-white mb-2 md:mb-6 tracking-wide transition-all duration-700 delay-500 order-2 ${showContent ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
                     }`}>
                     <span className="block text-accent/90 font-light">Sylvia</span>
                     <span className="text-3xl md:text-4xl text-white/60 font-light">&</span>
                     <span className="block text-accent/90 font-light">Timi</span>
                 </h1>
 
-                {/* Hashtag */}
-                <p className={`text-xl md:text-2xl tracking-[0.3em] text-white/80 mb-8 font-light transition-all duration-700 delay-700 ${showContent ? 'opacity-100' : 'opacity-0'
+                {/* Date - Order 3 (Moved up for mobile hierarchy) */}
+                <div className={`mb-4 md:mb-8 transition-all duration-700 delay-900 order-3 ${showContent ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'
                     }`}>
-                    #TSApproved
-                </p>
-
-                {/* Date */}
-                <div className={`mb-12 transition-all duration-700 delay-900 ${showContent ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'
-                    }`}>
-                    <p className="text-lg md:text-xl text-white/90 font-light mb-2">
+                    <p className="text-lg md:text-xl text-white/90 font-light mb-1">
                         July 24th & 25th, 2026
                     </p>
                     <p className="text-sm md:text-base text-white/60 font-light">
@@ -120,10 +112,21 @@ export default function HeroReveal({ onComplete }: HeroRevealProps) {
                     </p>
                 </div>
 
-                {/* Scroll prompt */}
+                {/* Hashtag - Order 4 (Softened) */}
+                <div className={`transition-all duration-700 delay-700 order-4 mb-8 md:mb-12 ${showContent ? 'opacity-100' : 'opacity-0'
+                    }`}>
+                    <p className="text-sm md:text-base tracking-[0.2em] text-white/60 font-light italic">
+                        United in love, approved by God
+                    </p>
+                    <p className="text-xs md:text-sm tracking-widest text-accent/40 mt-2 uppercase">
+                        #TSApproved
+                    </p>
+                </div>
+
+                {/* Scroll prompt - Order 5 */}
                 <button
                     onClick={scrollToContent}
-                    className={`group inline-flex flex-col items-center gap-2 text-white/60 hover:text-accent transition-all duration-500 delay-1000 ${showContent ? 'opacity-100' : 'opacity-0'
+                    className={`group inline-flex flex-col items-center gap-2 text-white/60 hover:text-accent transition-all duration-500 delay-1000 order-5 ${showContent ? 'opacity-100' : 'opacity-0'
                         }`}
                 >
                     <span className="text-sm tracking-widest uppercase">Discover Our Story</span>

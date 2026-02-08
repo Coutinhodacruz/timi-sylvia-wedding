@@ -16,23 +16,27 @@ export default function EventDetailsSection() {
       <div className="max-w-4xl mx-auto">
         {/* Header */}
         <div className={`text-center mb-16 transition-all duration-700 ${isInView ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
-          <h2 className="text-4xl md:text-5xl font-serif text-foreground mb-4 font-light">
-            With Love,
+          <h2 className="text-3xl md:text-5xl font-serif mb-6 font-light leading-tight">
+            <span className="bg-clip-text text-transparent bg-gradient-to-r from-accent via-primary to-accent animate-gradient-x">
+              By the Grace of God
+            </span>
           </h2>
-          <p className="text-muted-foreground font-light max-w-2xl mx-auto">
-            By the grace of God, we are pleased to announce the celebration of our union to you, our family, and our friends. We request the honor of your presence on our special day.
+          <p className="text-muted-foreground font-light max-w-2xl mx-auto text-lg leading-relaxed">
+            We are pleased to announce the celebration of our union to our family and friends.
+            <br />
+            We request the honor of your presence on our special day.
           </p>
         </div>
 
         {/* Events grid */}
         <div className={`grid md:grid-cols-2 gap-8 md:gap-12 mb-16 transition-all duration-700 delay-100 ${isInView ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
-          {/* Joining Ceremony */}
-          <div className="text-center group bg-black/40 hover:bg-black/50 p-8 rounded-lg transition-all duration-300 border border-accent/10 hover:border-accent/30">
-            <div className="w-16 h-16 mx-auto mb-6 rounded-full bg-accent/20 flex items-center justify-center group-hover:bg-accent/30 transition-all">
-              <Clock className="w-8 h-8 text-accent" />
+          {/* Joining Ceremony - Visual variant: Darker bg, gold border */}
+          <div className="text-center group bg-gradient-to-b from-black/60 to-black/40 p-8 rounded-lg transition-all duration-300 border border-accent/20 hover:border-primary/50 hover:-translate-y-2 hover:shadow-xl hover:shadow-primary/10">
+            <div className="w-16 h-16 mx-auto mb-6 rounded-full bg-accent/10 flex items-center justify-center group-hover:bg-primary/20 transition-all border border-accent/20 group-hover:scale-110">
+              <Clock className="w-8 h-8 text-accent group-hover:text-primary transition-colors" />
             </div>
-            <h3 className="text-2xl font-serif text-accent mb-2 font-light">Joining Ceremony</h3>
-            <p className="text-sm text-[#F5D5D5] mb-6">Intimate celebration</p>
+            <h3 className="text-2xl font-serif text-accent group-hover:text-primary transition-colors mb-2 font-light tracking-wide">Joining Ceremony</h3>
+            <p className="text-sm text-[#F5D5D5] mb-6 tracking-widest uppercase text-xs">Solemnization of Vows</p>
 
             <div className="space-y-3 mb-8">
               <p className="text-3xl font-serif text-[#FAF6F0] font-light">Thursday</p>
@@ -43,29 +47,26 @@ export default function EventDetailsSection() {
             <div className="flex items-start justify-center gap-2 text-[#F5D5D5] text-sm mb-6">
               <MapPin className="w-4 h-4 mt-0.5 text-accent" />
               <div className="text-left">
-                <p className="font-medium text-[#FAF6F0]">Ile Oba-Jesu</p>
-                <p>12 Donwoods Crescent</p>
-                <p>Whitby, ON, L1R 0N1</p>
+                <p className="font-medium text-[#FAF6F0]">Private Venue</p>
+                <p>N/A</p>
               </div>
             </div>
 
-            <a
-              href="https://maps.google.com/?q=12+Donwoods+Crescent,+Whitby,+ON,+L1R+0N1"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="inline-block px-6 py-2 rounded-full border border-accent text-accent hover:bg-accent hover:text-black transition-all text-sm font-medium"
+            <button
+              disabled
+              className="inline-block px-6 py-2 rounded-full border border-accent/30 text-accent/50 cursor-not-allowed text-sm font-medium"
             >
-              VIEW LOCATION
-            </a>
+              LOCATON RESTRICTED
+            </button>
           </div>
 
-          {/* Traditional Ceremony */}
-          <div className="text-center group bg-black/40 hover:bg-black/50 p-8 rounded-lg transition-all duration-300 border border-accent/10 hover:border-accent/30">
-            <div className="w-16 h-16 mx-auto mb-6 rounded-full bg-accent/20 flex items-center justify-center group-hover:bg-accent/30 transition-all">
-              <Clock className="w-8 h-8 text-accent" />
+          {/* Traditional Ceremony - Visual variant: Lighter overlay, solid button */}
+          <div className="text-center group bg-black/40 hover:bg-black/50 p-8 rounded-lg transition-all duration-300 border border-accent/10 hover:border-primary/50 hover:-translate-y-2 hover:shadow-xl hover:shadow-primary/10">
+            <div className="w-16 h-16 mx-auto mb-6 rounded-full bg-accent/20 flex items-center justify-center group-hover:bg-primary/20 transition-all group-hover:scale-110">
+              <span className="text-2xl group-hover:rotate-12 transition-transform">💍</span>
             </div>
-            <h3 className="text-2xl font-serif text-accent mb-2 font-light">Traditional Ceremony</h3>
-            <p className="text-sm text-[#F5D5D5] mb-6">Intimate celebration</p>
+            <h3 className="text-2xl font-serif text-accent group-hover:text-primary transition-colors mb-2 font-light tracking-wide">Traditional Ceremony</h3>
+            <p className="text-sm text-[#F5D5D5] mb-6 tracking-widest uppercase text-xs">Celebration of Culture</p>
 
             <div className="space-y-3 mb-8">
               <p className="text-3xl font-serif text-[#FAF6F0] font-light">Friday</p>
@@ -105,28 +106,21 @@ export default function EventDetailsSection() {
               "Due to limited space, we kindly ask that ONLY those named on the e-invitation attend. Thank you for your understanding and we look forward to sharing our special moment with you."
             </p>
 
-            <div className="grid md:grid-cols-2 gap-4 max-w-2xl mx-auto text-left">
-              <div className="flex items-start gap-3 p-3 bg-background/20 rounded-lg">
-                <span className="text-accent text-lg">🔒</span>
-                <span className="text-[#FAF6F0]/90 text-sm">Strictly by invitation only</span>
-              </div>
-              <div className="flex items-start gap-3 p-3 bg-background/20 rounded-lg">
-                <span className="text-accent text-lg">👥</span>
-                <span className="text-[#FAF6F0]/90 text-sm">No plus ones except where stated</span>
-              </div>
-              <div className="flex items-start gap-3 p-3 bg-background/20 rounded-lg">
-                <span className="text-accent text-lg">📵</span>
-                <span className="text-[#FAF6F0]/90 text-sm">No posting pictures online</span>
-              </div>
-              <div className="flex items-start gap-3 p-3 bg-background/20 rounded-lg">
-                <span className="text-accent text-lg">🎥</span>
-                <span className="text-[#FAF6F0]/90 text-sm">No recordings during ceremonies</span>
-              </div>
-            </div>
-
-            <div className="flex items-center justify-center gap-3 p-4 bg-accent/10 rounded-lg border border-accent/20 max-w-md mx-auto">
-              <Plane className="w-5 h-5 text-accent" />
-              <span className="text-[#FAF6F0]/90 text-sm font-medium">Book your flights early (World Cup season)</span>
+            <div className="space-y-4 max-w-xl mx-auto">
+              {[
+                { icon: <span className="text-xl">🔒</span>, text: "Strictly by invitation only" },
+                { icon: <span className="text-xl">👥</span>, text: "No plus ones except where stated" },
+                { icon: <span className="text-xl">📵</span>, text: "No posting pictures online" },
+                { icon: <span className="text-xl">🎥</span>, text: "No recordings during ceremonies" },
+                { icon: <Plane className="w-5 h-5 text-accent" />, text: "Book your flights early (World Cup season)" }
+              ].map((item, index) => (
+                <div key={index} className="flex items-center gap-4 p-4 bg-background/20 rounded-lg border border-accent/10 hover:bg-background/30 transition-colors text-left">
+                  <div className="flex-shrink-0 w-8 flex justify-center text-accent">
+                    {item.icon}
+                  </div>
+                  <span className="text-[#FAF6F0]/90 text-sm md:text-base font-light">{item.text}</span>
+                </div>
+              ))}
             </div>
           </div>
         </div>
