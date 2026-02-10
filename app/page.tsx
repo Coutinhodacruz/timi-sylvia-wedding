@@ -10,11 +10,11 @@ import DressCodeSection from '@/components/dress-code-section'
 import GallerySection from '@/components/gallery-section'
 import GuestbookSection from '@/components/guestbook-section'
 import GiftsSection from '@/components/gifts-section'
+import FAQSection from '@/components/faq-section'
 import ClosingSection from '@/components/closing-section'
 import SaveTheDateVideo from '@/components/save-the-date-video'
 
 export default function WeddingPage() {
-  const [videoCompleted, setVideoCompleted] = useState(false)
   const [isInvitationOpen, setIsInvitationOpen] = useState(false)
   const audioRef = useRef<HTMLAudioElement | null>(null)
 
@@ -39,11 +39,7 @@ export default function WeddingPage() {
 
   return (
     <>
-      {!videoCompleted && (
-        <SaveTheDateVideo onComplete={() => setVideoCompleted(true)} />
-      )}
-
-      {videoCompleted && !isInvitationOpen && (
+      {!isInvitationOpen && (
         <InvitationLanding
           onOpen={() => setIsInvitationOpen(true)}
           onStartMusic={handleStartMusic}
@@ -58,10 +54,11 @@ export default function WeddingPage() {
           <div id="love-story">
             <LoveStorySection />
           </div>
-          <CoupleProfilesSection />
+          {/* <CoupleProfilesSection /> */}
           <EventDetailsSection />
           <DressCodeSection />
           <GallerySection />
+          <FAQSection />
           <GuestbookSection />
           <GiftsSection />
           <ClosingSection />

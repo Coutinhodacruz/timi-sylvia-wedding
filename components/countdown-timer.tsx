@@ -33,7 +33,7 @@ export default function CountdownTimer() {
   }, [])
 
   return (
-    <div className="flex justify-center gap-3 md:gap-12 py-8">
+    <div className="flex justify-center gap-3 md:gap-12 py-2">
       <div className="text-center">
         <div className="text-2xl md:text-5xl font-serif text-accent mb-2">
           {time.days.toString().padStart(2, '0')}

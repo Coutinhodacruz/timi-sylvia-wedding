@@ -33,7 +33,7 @@ export default function EventDetailsSection() {
           {/* Joining Ceremony - Visual variant: Darker bg, gold border */}
           <div className="text-center group bg-gradient-to-b from-black/60 to-black/40 p-8 rounded-lg transition-all duration-300 border border-accent/20 hover:border-primary/50 hover:-translate-y-2 hover:shadow-xl hover:shadow-primary/10">
             <div className="w-16 h-16 mx-auto mb-6 rounded-full bg-accent/10 flex items-center justify-center group-hover:bg-primary/20 transition-all border border-accent/20 group-hover:scale-110">
-              <Clock className="w-8 h-8 text-accent group-hover:text-primary transition-colors" />
+              <span className="text-2xl group-hover:rotate-12 transition-transform">💍</span>
             </div>
             <h3 className="text-2xl font-serif text-accent group-hover:text-primary transition-colors mb-2 font-light tracking-wide">Joining Ceremony</h3>
             <p className="text-sm text-[#F5D5D5] mb-6 tracking-widest uppercase text-xs">Solemnization of Vows</p>
@@ -54,9 +54,9 @@ export default function EventDetailsSection() {
 
             <button
               disabled
-              className="inline-block px-6 py-2 rounded-full border border-accent/30 text-accent/50 cursor-not-allowed text-sm font-medium"
+              className="inline-block px-6 py-2 rounded-full border border-accent text-accent/70 cursor-not-allowed text-sm font-medium"
             >
-              LOCATON RESTRICTED
+              LOCATION RESTRICTED
             </button>
           </div>
 

@@ -8,7 +8,7 @@ import { X, Heart } from 'lucide-react'
 export default function GallerySection() {
   const [selectedImage, setSelectedImage] = useState<string | null>(null)
   const [likedImages, setLikedImages] = useState<Set<number>>(new Set())
-  const { ref, isInView } = useScrollAnimation({ threshold: 0.2, triggerOnce: true })
+  const { ref, isInView } = useScrollAnimation({ threshold: 0.05, triggerOnce: true })
 
   const images = [
     { src: '/gallery-pre-1.png', alt: 'Sylvia & Timi - Artistic Portrait', caption: 'Love in Focus' },
@@ -65,7 +65,7 @@ export default function GallerySection() {
               className={`relative h-80 overflow-hidden rounded-lg cursor-pointer group transition-all duration-700 ${isInView ? 'opacity-100 scale-100' : 'opacity-0 scale-95'
                 }`}
               style={{
-                transitionDelay: isInView ? `${idx * 0.15}s` : '0s',
+                transitionDelay: isInView ? `${(idx % 6) * 0.1}s` : '0s',
               }}
               onClick={() => setSelectedImage(image.src)}
             >
@@ -73,6 +73,7 @@ export default function GallerySection() {
                 src={image.src || "/placeholder.svg"}
                 alt={image.alt}
                 fill
+                sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
                 className="object-cover transition-all duration-500 group-hover:scale-110"
               />
 
