@@ -5,7 +5,7 @@ import { useEffect } from "react"
 import React from "react"
 import { useState } from 'react'
 import { useScrollAnimation } from '@/hooks/use-scroll-animation'
-import { Heart } from 'lucide-react'
+import { Heart, Loader2 } from 'lucide-react'
 
 interface GuestbookEntry {
   id: string
@@ -54,8 +54,10 @@ export default function GuestbookSection() {
       date: 'January 18, 2026 6:37 am',
     },
   ])
-  const [formData, setFormData] = useState({ name: '', message: '' })
+  const [formData, setFormData] = useState({ name: '', email: '', message: '' })
   const [submitted, setSubmitted] = useState(false)
+  const [isSubmitting, setIsSubmitting] = useState(false)
+  const [error, setError] = useState('')
   const [isVisible, setIsVisible] = useState(false)
 
   useEffect(() => {
@@ -89,9 +91,28 @@ export default function GuestbookSection() {
     }))
   }
 
-  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault()
-    if (formData.name && formData.message) {
+    if (!formData.name || !formData.message) return
+
+    setIsSubmitting(true)
+    setError('')
+
+    try {
+      const response = await fetch('/api/guestbook', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          name: formData.name,
+          email: formData.email || undefined,
+          message: formData.message,
+        }),
+      })
+
+      if (!response.ok) {
+        throw new Error('Failed to submit')
+      }
+
       const newEntry: GuestbookEntry = {
         id: Date.now().toString(),
         name: formData.name,
@@ -107,8 +128,13 @@ export default function GuestbookSection() {
       }
       setEntries([newEntry, ...entries])
       setSubmitted(true)
-      setFormData({ name: '', message: '' })
-      setTimeout(() => setSubmitted(false), 2000)
+      setFormData({ name: '', email: '', message: '' })
+      setTimeout(() => setSubmitted(false), 4000)
+    } catch {
+      setError('Something went wrong. Please try again.')
+      setTimeout(() => setError(''), 4000)
+    } finally {
+      setIsSubmitting(false)
     }
   }
 
@@ -140,7 +166,13 @@ export default function GuestbookSection() {
 
           {submitted && (
             <div className="mb-8 p-4 bg-green-50 border border-green-100 text-green-600 rounded-2xl text-sm font-medium text-center animate-fade-in">
-              Thank you for your beautiful message!
+              ✨ Thank you for your beautiful message! Check your email for a special note from the couple.
+            </div>
+          )}
+
+          {error && (
+            <div className="mb-8 p-4 bg-red-50 border border-red-100 text-red-600 rounded-2xl text-sm font-medium text-center animate-fade-in">
+              {error}
             </div>
           )}
 
@@ -162,7 +194,10 @@ export default function GuestbookSection() {
                 <label className="text-[10px] tracking-widest text-rose-gold uppercase font-bold ml-1">Email (Optional)</label>
                 <input
                   type="email"
-                  placeholder="Enter your email"
+                  name="email"
+                  value={formData.email}
+                  onChange={handleChange}
+                  placeholder="Enter your email for a thank you note"
                   className="w-full h-14 px-6 bg-blush-pink/5 border border-blush-pink/50 text-burgundy placeholder:text-burgundy/30 rounded-2xl focus:outline-none focus:border-rose-gold focus:ring-2 focus:ring-rose-gold/10 transition-all"
                 />
               </div>
@@ -182,9 +217,17 @@ export default function GuestbookSection() {
 
             <button
               type="submit"
-              className="w-full h-16 bg-burgundy text-burgundy hover:bg-rose-gold transition-all font-bold text-[10px] tracking-[0.3em] uppercase rounded-2xl shadow-lg shadow-burgundy/20 active:scale-[0.98]"
+              disabled={isSubmitting}
+              className="w-full h-16 bg-burgundy text-burgundy hover:bg-rose-gold transition-all font-bold text-[10px] tracking-[0.3em] uppercase rounded-2xl shadow-lg shadow-burgundy/20 active:scale-[0.98] disabled:opacity-70 disabled:cursor-not-allowed flex items-center justify-center gap-3"
             >
-              Sign Guestbook
+              {isSubmitting ? (
+                <>
+                  <Loader2 size={18} className="animate-spin" />
+                  Sending...
+                </>
+              ) : (
+                'Sign Guestbook'
+              )}
             </button>
           </form>
         </div>

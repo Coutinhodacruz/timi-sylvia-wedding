@@ -2,6 +2,7 @@ import React from "react"
 import type { Metadata } from 'next'
 import { Playfair_Display, Cormorant_Garamond } from 'next/font/google'
 import { Analytics } from '@vercel/analytics/next'
+import { Toaster } from '@/components/ui/toaster'
 import './globals.css'
 
 const playfair = Playfair_Display({
@@ -32,6 +33,7 @@ export default function RootLayout({
     <html lang="en">
       <body className={`${playfair.variable} ${cormorant.variable} font-sans antialiased`}>
         {children}
+        <Toaster />
         <Analytics />
       </body>
     </html>
