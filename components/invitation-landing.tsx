@@ -233,7 +233,7 @@ export default function InvitationLanding({
         >
           {/* Reveal content preview */}
           <div className="absolute inset-0 flex items-center justify-center">
-            <div className="text-center text-white animate-pulse">
+            <div className="text-center text-burgundy animate-pulse">
               <Heart className="w-16 h-16 mx-auto mb-4 animate-bounce" />
               <p className="text-xl font-light tracking-widest">Opening your invitation...</p>
             </div>

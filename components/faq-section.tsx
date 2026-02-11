@@ -182,11 +182,14 @@ export default function FAQSection() {
                     <p className="text-burgundy/40 font-light mb-6 text-lg font-serif">
                         Still have questions?
                     </p>
-                    <div className="inline-flex items-center gap-3 px-8 py-3 bg-blush-pink/10 border border-blush-pink/30 rounded-full text-rose-gold text-xs tracking-[0.2em] uppercase font-bold hover:bg-blush-pink/20 transition-all cursor-default">
+                    <a
+                        href="mailto:TSApprovedenquiries@gmail.com"
+                        className="inline-flex items-center gap-3 px-8 py-3 bg-blush-pink/10 border border-blush-pink/30 rounded-full text-rose-gold text-xs tracking-[0.2em] uppercase font-bold hover:bg-blush-pink/20 hover:shadow-lg hover:shadow-rose-gold/10 transition-all"
+                    >
                         <span>Reach out to us</span>
                         <span className="text-rose-gold/30">•</span>
-                        <span className="text-burgundy/60 normal-case tracking-normal font-medium">we'd love to hear from you</span>
-                    </div>
+                        <span className="text-burgundy/60 normal-case tracking-normal font-medium">TSApprovedenquiries@gmail.com</span>
+                    </a>
                 </div>
             </div>
         </section>

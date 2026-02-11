@@ -1,12 +1,10 @@
 'use client'
 
-import { useState } from 'react'
 import { useScrollAnimation } from '@/hooks/use-scroll-animation'
-import { ChevronDown, ChevronUp, Sparkles, MapPin } from 'lucide-react'
+import { Sparkles, ExternalLink } from 'lucide-react'
 
 export default function DressCodeSection() {
     const { ref, isInView } = useScrollAnimation({ threshold: 0.05, triggerOnce: true })
-    const [showDetails, setShowDetails] = useState(false)
 
     return (
         <section
@@ -166,25 +164,23 @@ export default function DressCodeSection() {
                     </div>
                 </div>
 
-                {/* Additional Info / Style Guide Link */}
+                {/* Style Inspiration Link */}
                 <div className={`mt-24 text-center transition-all duration-1000 delay-500 ${isInView ? 'opacity-100' : 'opacity-0'}`}>
-                    <button
-                        onClick={() => setShowDetails(!showDetails)}
-                        className="group relative inline-flex items-center gap-4 px-10 py-5 bg-burgundy text-burgundy rounded-full hover:bg-burgundy/90 transition-all shadow-xl shadow-burgundy/20"
+                    <a
+                        href="https://pin.it/48JVwDV9I"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="group relative inline-flex items-center gap-4 px-10 py-5 bg-burgundy text-burgundy rounded-full hover:bg-burgundy/90 transition-all shadow-xl shadow-burgundy/20 hover:shadow-2xl hover:scale-[1.02] active:scale-[0.98]"
                     >
+                        <Sparkles size={18} className="group-hover:animate-pulse" />
                         <span className="text-xs font-bold tracking-[0.2em] uppercase">
-                            {showDetails ? 'Hide' : 'View'} Style Inspiration
+                            View Style Inspiration
                         </span>
-                        {showDetails ? <ChevronUp size={18} /> : <ChevronDown size={18} />}
-                    </button>
-
-                    {showDetails && (
-                        <div className="mt-12 p-12 bg-white rounded-3xl border border-blush-pink shadow-2xl animate-in fade-in slide-in-from-top-4 duration-500">
-                            <p className="text-burgundy/60 font-light text-xl italic font-serif leading-relaxed">
-                                We are curating a mood board for you. <br /> Check back soon for deeper style inspiration and fabric ideas!
-                            </p>
-                        </div>
-                    )}
+                        <ExternalLink size={16} className="opacity-60 group-hover:opacity-100 transition-opacity" />
+                    </a>
+                    <p className="mt-4 text-burgundy/40 text-sm font-light italic">
+                        Browse our curated Pinterest moodboard for outfit ideas
+                    </p>
                 </div>
             </div>
         </section>
