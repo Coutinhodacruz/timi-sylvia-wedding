@@ -84,7 +84,7 @@ export default function ClosingSection() {
 
           <div className="relative z-10">
             <h3 className="text-[10px] tracking-[0.4em] uppercase font-bold text-rose-gold mb-6">Our Celebration</h3>
-            <p className="text-white/80 font-light mb-10 max-w-xl mx-auto text-lg italic font-serif">
+            <p className="text-burgundy font-light mb-10 max-w-xl mx-auto text-lg italic font-serif">
               While we kindly ask that you refrain from sharing photos on social media, we'd love for you to be present in the moment with us.
             </p>
             <div className="inline-block px-10 py-4 bg-white/10 backdrop-blur-md rounded-2xl border border-white/20 mb-8 transform hover:scale-105 transition-transform duration-500">
