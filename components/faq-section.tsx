@@ -78,7 +78,7 @@ function FAQAccordionItem({ item, isOpen, onToggle, index }: {
                 className="w-full flex items-start gap-4 py-6 text-left hover:text-accent transition-colors duration-300"
                 aria-expanded={isOpen}
             >
-                <div className={`mt-1 w-6 h-6 rounded-full flex items-center justify-center flex-shrink-0 transition-all duration-500 ${isOpen ? 'bg-accent text-black rotate-0' : 'bg-white/5 text-white/40'}`}>
+                <div className={`mt-1 w-6 h-6 rounded-full flex items-center justify-center shrink-0 transition-all duration-500 ${isOpen ? 'bg-accent text-black rotate-0' : 'bg-white/5 text-white/40'}`}>
                     <ChevronDown size={14} className={`transition-transform duration-500 ${isOpen ? 'rotate-180' : ''}`} />
                 </div>
                 <div className="flex-1">
@@ -106,7 +106,7 @@ function FAQAccordionItem({ item, isOpen, onToggle, index }: {
 
 export default function FAQSection() {
     const [openIndex, setOpenIndex] = useState<number | null>(0)
-    const { ref, isInView } = useScrollAnimation({ threshold: 0.1, triggerOnce: true })
+    const { ref, isInView } = useScrollAnimation({ threshold: 0.05, triggerOnce: true })
 
     const handleToggle = (index: number) => {
         setOpenIndex(openIndex === index ? null : index)
@@ -116,50 +116,76 @@ export default function FAQSection() {
         <section
             ref={ref}
             id="faq"
-            className="py-20 md:py-32 bg-black/40 px-4 md:px-8 relative overflow-hidden"
+            className="py-20 md:py-32 bg-background px-4 md:px-8 relative overflow-hidden"
         >
             {/* Decorative Background */}
-            <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-accent/[0.03] rounded-full blur-3xl pointer-events-none" />
+            <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-rose-gold/[0.05] rounded-full blur-3xl pointer-events-none -mr-64 -mt-64" />
+            <div className="absolute bottom-0 left-0 w-[500px] h-[500px] bg-blush-pink/[0.1] rounded-full blur-3xl pointer-events-none -ml-64 -mb-64" />
 
             <div className="max-w-4xl mx-auto relative z-10">
                 {/* Header */}
                 <div className={`text-center mb-20 transition-all duration-1000 ${isInView ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
-                    <div className="inline-flex items-center gap-3 mb-6 px-5 py-2 bg-accent/5 border border-accent/10 rounded-full">
-                        <HelpCircle size={16} className="text-accent" />
-                        <span className="text-xs tracking-[0.3em] text-accent uppercase font-medium">Common Questions</span>
+                    <div className="inline-flex items-center gap-3 mb-6 px-5 py-2 bg-rose-gold/5 border border-rose-gold/10 rounded-full">
+                        <HelpCircle size={16} className="text-rose-gold" />
+                        <span className="text-xs tracking-[0.3em] text-rose-gold uppercase font-bold">Common Questions</span>
                     </div>
-                    <h2 className="text-4xl md:text-6xl font-serif text-white mb-6 font-light">
+                    <h2 className="text-4xl md:text-6xl font-serif text-burgundy mb-6 font-light">
                         Frequently Asked
-                        <span className="block text-accent mt-2">Questions</span>
+                        <span className="block text-rose-gold mt-2">Questions</span>
                     </h2>
-                    <p className="text-white/50 font-light max-w-xl mx-auto text-lg">
+                    <p className="text-burgundy/50 font-light max-w-xl mx-auto text-lg italic font-serif">
                         Everything you need to know about our special day. Can't find your answer? Reach out to us directly.
                     </p>
-                    <div className="h-px w-24 bg-accent/20 mx-auto mt-10" />
+                    <div className="h-px w-24 bg-rose-gold/20 mx-auto mt-10" />
                 </div>
 
                 {/* FAQ List */}
-                <div className={`bg-black/30 rounded-3xl border border-white/5 p-6 md:p-10 backdrop-blur-sm transition-all duration-1000 delay-200 ${isInView ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-12'}`}>
+                <div className={`bg-white rounded-4xl border border-blush-pink p-6 md:p-12 shadow-xl shadow-burgundy/5 backdrop-blur-sm transition-all duration-1000 delay-200 ${isInView ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-12'}`}>
                     {faqData.map((item, index) => (
-                        <FAQAccordionItem
+                        <div
                             key={index}
-                            item={item}
-                            index={index}
-                            isOpen={openIndex === index}
-                            onToggle={() => handleToggle(index)}
-                        />
+                            className="group border-b border-blush-pink/30 last:border-b-0 transition-all duration-500"
+                        >
+                            <button
+                                onClick={() => handleToggle(index)}
+                                className="w-full flex items-start gap-5 py-8 text-left transition-colors duration-300"
+                                aria-expanded={openIndex === index}
+                            >
+                                <div className={`mt-1 w-8 h-8 rounded-xl flex items-center justify-center shrink-0 transition-all duration-500 ${openIndex === index ? 'bg-rose-gold text-white rotate-0 shadow-lg shadow-rose-gold/30' : 'bg-blush-pink/20 text-rose-gold'}`}>
+                                    <ChevronDown size={18} className={`transition-transform duration-500 ${openIndex === index ? 'rotate-180' : ''}`} />
+                                </div>
+                                <div className="flex-1">
+                                    <span className={`block text-xl md:text-2xl font-serif transition-colors duration-300 ${openIndex === index ? 'text-burgundy font-medium' : 'text-burgundy/80 group-hover:text-burgundy'}`}>
+                                        {item.question}
+                                    </span>
+                                </div>
+                                <span className={`text-[10px] tracking-[0.2em] uppercase mt-3 hidden md:block font-bold transition-colors ${openIndex === index ? 'text-rose-gold' : 'text-burgundy/20'}`}>
+                                    {item.category}
+                                </span>
+                            </button>
+
+                            <div
+                                className={`overflow-hidden transition-all duration-500 ease-in-out ${openIndex === index ? 'max-h-96 opacity-100 pb-8' : 'max-h-0 opacity-0'}`}
+                            >
+                                <div className="pl-12 pr-6">
+                                    <p className="text-burgundy/60 font-light leading-relaxed text-lg font-serif">
+                                        {item.answer}
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
                     ))}
                 </div>
 
                 {/* Bottom CTA */}
                 <div className={`text-center mt-16 transition-all duration-1000 delay-400 ${isInView ? 'opacity-100' : 'opacity-0'}`}>
-                    <p className="text-white/40 font-light mb-6 text-lg">
+                    <p className="text-burgundy/40 font-light mb-6 text-lg font-serif">
                         Still have questions?
                     </p>
-                    <div className="inline-flex items-center gap-2 text-accent text-sm tracking-[0.2em] uppercase font-medium">
+                    <div className="inline-flex items-center gap-3 px-8 py-3 bg-blush-pink/10 border border-blush-pink/30 rounded-full text-rose-gold text-xs tracking-[0.2em] uppercase font-bold hover:bg-blush-pink/20 transition-all cursor-default">
                         <span>Reach out to us</span>
-                        <span className="text-accent/40">—</span>
-                        <span className="text-white/60 normal-case tracking-normal font-light">we'd love to hear from you</span>
+                        <span className="text-rose-gold/30">•</span>
+                        <span className="text-burgundy/60 normal-case tracking-normal font-medium">we'd love to hear from you</span>
                     </div>
                 </div>
             </div>

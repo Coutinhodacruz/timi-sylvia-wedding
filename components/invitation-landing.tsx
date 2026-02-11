@@ -46,7 +46,7 @@ export default function InvitationLanding({
           {[...Array(15)].map((_, i) => (
             <Heart
               key={i}
-              className="absolute text-accent/20 animate-float-heart"
+              className="absolute text-rose-gold/20 animate-float-heart"
               style={{
                 left: `${Math.random() * 100}%`,
                 top: `${Math.random() * 100}%`,
@@ -65,7 +65,7 @@ export default function InvitationLanding({
         {[...Array(20)].map((_, i) => (
           <Sparkles
             key={i}
-            className="absolute text-accent/30 animate-sparkle"
+            className="absolute text-rose-gold/30 animate-sparkle"
             style={{
               left: `${Math.random() * 100}%`,
               top: `${Math.random() * 100}%`,
@@ -84,25 +84,22 @@ export default function InvitationLanding({
       <div className="flex flex-col items-center justify-center flex-1 w-full max-w-2xl gap-12 relative z-10">
         {/* Couple names and event info */}
         <div className="text-center space-y-4 mb-8">
-          <p className="text-sm tracking-[0.3em] text-accent/80 uppercase font-light animate-fade-in">
+          <p className="text-sm tracking-[0.3em] text-burgundy/80 uppercase font-medium animate-fade-in font-sans">
             You are invited to celebrate
           </p>
           <div className="animate-slide-up flex justify-center">
             <img
               src="/monogram2.png"
               alt={coupleNames}
-              className="w-48 h-auto md:w-64 opacity-90"
+              className="w-48 h-auto md:w-64 opacity-90 brightness-110 drop-shadow-lg"
             />
           </div>
-          {/* <p className="text-2xl md:text-3xl tracking-widest text-accent font-light">
-            #TSApproved
-          </p> */}
           <div className="flex items-center justify-center gap-4">
-            <div className="h-px w-16 bg-gradient-to-r from-transparent to-accent/50" />
-            <span className="text-accent text-lg">♥</span>
-            <div className="h-px w-16 bg-gradient-to-l from-transparent to-accent/50" />
+            <div className="h-px w-16 bg-gradient-to-r from-transparent to-rose-gold/50" />
+            <span className="text-rose-gold text-lg">♥</span>
+            <div className="h-px w-16 bg-gradient-to-l from-transparent to-rose-gold/50" />
           </div>
-          <p className="text-lg text-muted-foreground font-light">
+          <p className="text-lg text-burgundy font-light">
             {eventDate}
           </p>
         </div>
@@ -142,21 +139,21 @@ export default function InvitationLanding({
               <div
                 className="w-full h-full rounded-lg flex items-end justify-center relative"
                 style={{
-                  boxShadow: '0 20px 60px rgba(139, 58, 58, 0.4)',
+                  boxShadow: '0 20px 60px rgba(122, 27, 46, 0.3)',
                 }}
               >
                 {/* Envelope image */}
                 <img
                   src="/envelope.jpg"
                   alt="Wedding invitation envelope"
-                  className="absolute inset-0 w-full h-full object-cover rounded-lg"
+                  className="absolute inset-0 w-full h-full object-cover rounded-lg scale-100 group-hover:scale-105 transition-transform duration-700"
                 />
 
                 {/* Gold glow effect around envelope */}
-                <div className="absolute inset-0 rounded-lg border-2 border-accent/0 group-hover:border-accent/30 transition-all duration-500" />
+                <div className="absolute inset-0 rounded-lg border-2 border-rose-gold/0 group-hover:border-rose-gold/30 transition-all duration-500" />
 
                 {/* Shimmer effect */}
-                <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/10 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-1000" />
+                <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-1000" />
 
                 {/* Gold seal/wax button - transparent clickable overlay positioned on the wax seal */}
                 <button
@@ -172,13 +169,13 @@ export default function InvitationLanding({
                   title="Click to open"
                 >
                   {/* Subtle hover glow effect */}
-                  <div className="absolute inset-0 rounded-full bg-yellow-400/0 group-hover/seal:bg-yellow-400/30 transition-all duration-300 animate-glow" />
+                  <div className="absolute inset-0 rounded-full bg-rose-gold/0 group-hover/seal:bg-rose-gold/30 transition-all duration-300 animate-glow" />
 
                   {/* Outer ring indicator */}
-                  <div className="absolute inset-[-6px] rounded-full border-2 border-yellow-400/30 group-hover/seal:border-yellow-400/60 transition-all duration-300" />
+                  <div className="absolute inset-[-6px] rounded-full border-2 border-rose-gold/30 group-hover/seal:border-rose-gold/60 transition-all duration-300" />
 
                   {/* Inner pulse ring */}
-                  <div className="absolute inset-0 rounded-full border border-yellow-400/20 animate-ping" />
+                  <div className="absolute inset-0 rounded-full border border-rose-gold/20 animate-ping" />
                 </button>
               </div>
 
@@ -199,15 +196,15 @@ export default function InvitationLanding({
 
         {/* Text below envelope */}
         <div className="text-center space-y-4 max-w-lg">
-          <p className="text-sm md:text-base tracking-widest text-sage uppercase font-light">
+          <p className="text-sm md:text-base tracking-widest text-burgundy/80 uppercase font-medium">
             You are cordially invited to celebrate our wedding
           </p>
           <div className="flex items-center justify-center gap-2">
-            <div className="h-px w-8 bg-accent/50" />
-            <Sparkles className="text-accent w-4 h-4" />
-            <div className="h-px w-8 bg-accent/50" />
+            <div className="h-px w-8 bg-rose-gold/50" />
+            <Sparkles className="text-rose-gold w-4 h-4" />
+            <div className="h-px w-8 bg-rose-gold/50" />
           </div>
-          <p className="text-foreground/70 font-light text-sm animate-pulse">
+          <p className="text-burgundy/60 font-light text-sm animate-pulse">
             Click the gold seal to open your invitation
           </p>
         </div>
@@ -215,11 +212,11 @@ export default function InvitationLanding({
         {/* Like button */}
         <button
           onClick={() => setLiked(!liked)}
-          className="flex items-center justify-center w-12 h-12 rounded-full border-2 border-primary hover:bg-primary/10 transition-all duration-300 group"
+          className="flex items-center justify-center w-12 h-12 rounded-full border-2 border-burgundy hover:bg-burgundy/5 transition-all duration-300 group"
           aria-label="Like invitation"
         >
           <Heart
-            className={`w-6 h-6 transition-all ${liked ? 'fill-primary text-primary scale-110' : 'text-primary group-hover:scale-110'
+            className={`w-6 h-6 transition-all ${liked ? 'fill-burgundy text-burgundy scale-110' : 'text-burgundy group-hover:scale-110'
               }`}
             strokeWidth={1.5}
           />
@@ -229,7 +226,7 @@ export default function InvitationLanding({
       {/* Animation page reveal */}
       {isOpening && (
         <div
-          className="fixed inset-0 bg-gradient-to-b from-accent/90 to-primary/90 pointer-events-none z-50"
+          className="fixed inset-0 bg-gradient-to-b from-rose-gold/90 to-burgundy/90 pointer-events-none z-50"
           style={{
             animation: 'pageReveal 1.2s ease-out forwards',
           }}
@@ -279,6 +276,18 @@ export default function InvitationLanding({
         
         .animate-sparkle {
           animation: sparkle 2s ease-in-out infinite;
+        }
+
+        @keyframes pageReveal {
+          0% { opacity: 0; transform: scale(1.1); }
+          15% { opacity: 1; transform: scale(1); }
+          85% { opacity: 1; transform: scale(1); }
+          100% { opacity: 0; transform: scale(0.95); }
+        }
+
+        @keyframes envelopeOpen {
+          0% { transform: rotateX(0deg); opacity: 0; }
+          100% { transform: rotateX(-180deg); opacity: 1; }
         }
       `}</style>
     </div>

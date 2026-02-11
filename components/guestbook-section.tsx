@@ -5,6 +5,7 @@ import { useEffect } from "react"
 import React from "react"
 import { useState } from 'react'
 import { useScrollAnimation } from '@/hooks/use-scroll-animation'
+import { Heart } from 'lucide-react'
 
 interface GuestbookEntry {
   id: string
@@ -14,7 +15,7 @@ interface GuestbookEntry {
 }
 
 export default function GuestbookSection() {
-  const { ref, isInView } = useScrollAnimation({ threshold: 0.2, triggerOnce: true })
+  const { ref, isInView } = useScrollAnimation({ threshold: 0.05, triggerOnce: true })
   const [entries, setEntries] = useState<GuestbookEntry[]>([
     {
       id: '1',
@@ -114,94 +115,113 @@ export default function GuestbookSection() {
   return (
     <section
       ref={ref}
-      className="py-20 md:py-32 bg-background px-4 md:px-8"
+      id="guestbook"
+      className="py-20 md:py-32 bg-background px-4 md:px-8 relative overflow-hidden"
     >
-      <div className="max-w-4xl mx-auto">
-        {/* RSVP Form */}
-        <div className={`mb-20 bg-black/40 rounded-lg p-8 md:p-10 transition-all duration-700 hover:bg-black/50 ${isInView ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
-          <h2 className="text-3xl md:text-4xl font-serif text-accent mb-2 font-light text-center">
-            RSVP
-          </h2>
-          <p className="text-muted-foreground text-center mb-8 font-light">
-            Please kindly help us prepare everything better by confirming your attendance to our celebration with the following RSVP form. RSVP deadline: March 31st, 2026.
-          </p>
+      {/* Decorative background elements */}
+      <div className="absolute top-0 right-0 w-80 h-80 bg-rose-gold/5 rounded-full blur-3xl -mr-40 -mt-40 pointer-events-none" />
+      <div className="absolute bottom-0 left-0 w-80 h-80 bg-blush-pink/10 rounded-full blur-3xl -ml-40 -mb-40 pointer-events-none" />
+
+      <div className="max-w-4xl mx-auto relative z-10">
+        {/* Wish Form */}
+        <div className={`mb-24 bg-white rounded-[2.5rem] p-8 md:p-12 border border-blush-pink shadow-2xl shadow-burgundy/5 transition-all duration-700 ${isInView ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
+          <div className="text-center mb-10">
+            <div className="inline-flex items-center justify-center w-12 h-12 rounded-xl bg-rose-gold/10 text-rose-gold mb-4 rotate-3">
+              <Heart size={24} className="fill-rose-gold/20" />
+            </div>
+            <h2 className="text-3xl md:text-5xl font-serif text-burgundy mb-4 font-light text-center">
+              Guestbook
+            </h2>
+            <p className="text-burgundy/50 text-center font-light italic font-serif text-lg">
+              Leave a beautiful message for the couple as they begin this new chapter.
+            </p>
+            <div className="h-px w-12 bg-rose-gold/20 mx-auto mt-6" />
+          </div>
 
           {submitted && (
-            <div className="mb-6 p-4 bg-accent/10 border border-accent text-accent rounded-lg text-sm font-medium text-center">
-              Thank you! We look forward to celebrating with you.
+            <div className="mb-8 p-4 bg-green-50 border border-green-100 text-green-600 rounded-2xl text-sm font-medium text-center animate-fade-in">
+              Thank you for your beautiful message!
             </div>
           )}
 
           <form onSubmit={handleSubmit} className="space-y-6">
-            <div className="grid md:grid-cols-2 gap-4">
-              <input
-                type="text"
-                name="name"
-                value={formData.name}
-                onChange={handleChange}
-                placeholder="Full Name"
-                required
-                className="px-4 py-3 bg-background/50 border border-muted text-foreground placeholder-muted-foreground rounded-lg focus:outline-none focus:border-accent"
-              />
-              <input
-                type="email"
-                placeholder="Email"
-                className="px-4 py-3 bg-background/50 border border-muted text-foreground placeholder-muted-foreground rounded-lg focus:outline-none focus:border-accent"
-              />
-              <input
-                type="tel"
-                placeholder="Phone"
-                className="px-4 py-3 bg-background/50 border border-muted text-foreground placeholder-muted-foreground rounded-lg focus:outline-none focus:border-accent"
-              />
-              <select className="px-4 py-3 bg-background/50 border border-muted text-foreground rounded-lg focus:outline-none focus:border-accent">
-                <option>Will you be attending?</option>
-                <option>Yes, I will attend</option>
-                <option>Sorry, I can't attend</option>
-              </select>
+            <div className="grid md:grid-cols-2 gap-6">
+              <div className="space-y-2">
+                <label className="text-[10px] tracking-widest text-rose-gold uppercase font-bold ml-1">Your Name</label>
+                <input
+                  type="text"
+                  name="name"
+                  value={formData.name}
+                  onChange={handleChange}
+                  placeholder="Enter your name"
+                  required
+                  className="w-full h-14 px-6 bg-blush-pink/5 border border-blush-pink/50 text-burgundy placeholder:text-burgundy/30 rounded-2xl focus:outline-none focus:border-rose-gold focus:ring-2 focus:ring-rose-gold/10 transition-all"
+                />
+              </div>
+              <div className="space-y-2">
+                <label className="text-[10px] tracking-widest text-rose-gold uppercase font-bold ml-1">Email (Optional)</label>
+                <input
+                  type="email"
+                  placeholder="Enter your email"
+                  className="w-full h-14 px-6 bg-blush-pink/5 border border-blush-pink/50 text-burgundy placeholder:text-burgundy/30 rounded-2xl focus:outline-none focus:border-rose-gold focus:ring-2 focus:ring-rose-gold/10 transition-all"
+                />
+              </div>
             </div>
 
-            <textarea
-              name="message"
-              value={formData.message}
-              onChange={handleChange}
-              placeholder="Say something for our vow renewal"
-              required
-              className="w-full px-4 py-3 bg-background/50 border border-muted text-foreground placeholder-muted-foreground rounded-lg focus:outline-none focus:border-accent h-24 resize-none"
-            />
+            <div className="space-y-2">
+              <label className="text-[10px] tracking-widest text-rose-gold uppercase font-bold ml-1">Your Message</label>
+              <textarea
+                name="message"
+                value={formData.message}
+                onChange={handleChange}
+                placeholder="Write your well wishes here..."
+                required
+                className="w-full px-6 py-4 bg-blush-pink/5 border border-blush-pink/50 text-burgundy placeholder:text-burgundy/30 rounded-2xl focus:outline-none focus:border-rose-gold focus:ring-2 focus:ring-rose-gold/10 h-32 resize-none transition-all"
+              />
+            </div>
 
             <button
               type="submit"
-              className="w-full px-6 py-3 bg-accent text-black hover:bg-accent/90 transition-colors font-medium rounded-lg text-center"
+              className="w-full h-16 bg-burgundy text-burgundy hover:bg-rose-gold transition-all font-bold text-[10px] tracking-[0.3em] uppercase rounded-2xl shadow-lg shadow-burgundy/20 active:scale-[0.98]"
             >
-              SUBMIT
+              Sign Guestbook
             </button>
           </form>
         </div>
 
         {/* Recent Wishes */}
-        <h2 className={`text-3xl md:text-4xl font-serif text-foreground mb-10 font-light transition-all duration-700 delay-100 ${isInView ? 'opacity-100 translate-x-0' : 'opacity-0 -translate-x-8'}`}>
-          Recent Wishes
-        </h2>
+        <div className="flex items-center gap-6 mb-12">
+          <h2 className={`text-3xl md:text-4xl font-serif text-burgundy font-light transition-all duration-700 delay-100 ${isInView ? 'opacity-100 translate-x-0' : 'opacity-0 -translate-x-8'}`}>
+            Recent Wishes
+          </h2>
+          <div className="flex-1 h-px bg-rose-gold/20" />
+        </div>
 
-        <div className={`grid md:grid-cols-2 gap-6 transition-all duration-700 delay-200 ${isInView ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
+        <div className={`grid md:grid-cols-2 gap-8 transition-all duration-700 delay-200 ${isInView ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
           {entries.map((entry, idx) => (
             <div
               key={entry.id}
-              className={`bg-black/40 rounded-lg p-6 border border-muted/20 hover:border-accent/30 hover:bg-black/50 transition-all duration-500 stagger-item ${isInView ? '' : ''}`}
-              style={{
-                animationDelay: isInView ? `${0.3 + idx * 0.1}s` : '0s',
-                animation: isInView ? `fadeIn 0.6s ease-out forwards` : 'none',
-              }}
+              className="bg-white rounded-4xl p-8 border border-blush-pink/50 hover:border-rose-gold/30 hover:shadow-xl hover:shadow-burgundy/5 transition-all duration-500 relative group"
             >
-              <h4 className="text-lg font-medium text-foreground mb-2">
-                {entry.name}
-              </h4>
-              <p className="text-foreground/90 font-light mb-3">
-                {entry.message}
-              </p>
-              <p className="text-xs text-muted-foreground font-light">
-                {entry.date}
-              </p>
+              <div className="absolute top-6 right-8 text-rose-gold/10 group-hover:text-rose-gold/20 transition-colors">
+                <svg width="40" height="40" viewBox="0 0 24 24" fill="currentColor">
+                  <path d="M14.017 21L14.017 18C14.017 16.8954 14.9124 16 16.017 16H19.017C20.1216 16 21.017 15.1046 21.017 14V9C21.017 7.89543 20.1216 7 19.017 7H15.017C13.9124 7 13.017 7.89543 13.017 9V15L11.017 21H14.017ZM5.017 21L5.017 18C5.017 16.8954 5.91243 16 7.017 16H10.017C11.1216 16 12.017 15.1046 12.017 14V9C12.017 7.89543 11.1216 7 10.017 7H6.017C4.91243 7 4.017 7.89543 4.017 9V15L2.017 21H5.017Z" />
+                </svg>
+              </div>
+              <div className="flex flex-col h-full">
+                <h4 className="text-xl font-serif text-burgundy mb-3 font-medium">
+                  {entry.name}
+                </h4>
+                <p className="text-burgundy/70 font-light mb-6 grow leading-relaxed italic font-serif text-lg">
+                  "{entry.message}"
+                </p>
+                <div className="flex items-center gap-2">
+                  <div className="h-px w-6 bg-rose-gold/30" />
+                  <p className="text-[10px] text-rose-gold/60 font-bold uppercase tracking-widest">
+                    {entry.date}
+                  </p>
+                </div>
+              </div>
             </div>
           ))}
         </div>

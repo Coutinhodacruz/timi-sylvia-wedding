@@ -26,7 +26,7 @@ export default function RSVPSection() {
           setIsVisible(true)
         }
       },
-      { threshold: 0.3 }
+      { threshold: 0.05 }
     )
 
     const element = document.getElementById('rsvp')
@@ -71,25 +71,33 @@ export default function RSVPSection() {
   return (
     <section
       id="rsvp"
-      className="py-20 px-4 sm:px-6 lg:px-8 bg-muted"
+      className="py-20 md:py-32 px-4 sm:px-6 lg:px-8 bg-background relative overflow-hidden"
     >
-      <div className="max-w-2xl mx-auto">
-        <h2 className="text-4xl md:text-5xl font-serif text-primary mb-4 text-center text-balance">
-          RSVP
-        </h2>
-        <div className="h-1 w-20 bg-accent mx-auto mb-12" />
+      {/* Decorative background elements */}
+      <div className="absolute top-0 left-0 w-96 h-96 bg-rose-gold/5 rounded-full blur-3xl -ml-48 -mt-48 pointer-events-none" />
+      <div className="absolute bottom-0 right-0 w-96 h-96 bg-blush-pink/10 rounded-full blur-3xl -mr-48 -mb-48 pointer-events-none" />
+
+      <div className="max-w-3xl mx-auto relative z-10">
+        <div className="text-center mb-16">
+          <h2 className="text-4xl md:text-6xl font-serif text-burgundy mb-4 text-balance font-light">
+            RSVP
+          </h2>
+          <p className="text-burgundy/50 font-light italic font-serif text-lg">
+            We can't wait to celebrate our special day with you
+          </p>
+          <div className="h-px w-20 bg-rose-gold/30 mx-auto mt-8" />
+        </div>
 
         <div
-          className={`transition-all duration-1000 ${
-            isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
-          }`}
+          className={`transition-all duration-1000 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
+            }`}
         >
           {submitted ? (
-            <Card className="p-12 text-center bg-background border-border">
-              <div className="mb-4">
-                <div className="w-12 h-12 rounded-full bg-accent/20 flex items-center justify-center mx-auto mb-4">
+            <Card className="p-12 text-center bg-white border-blush-pink shadow-2xl shadow-burgundy/5 rounded-4xl">
+              <div className="mb-8">
+                <div className="w-20 h-20 rounded-2xl bg-rose-gold/10 flex items-center justify-center mx-auto mb-6 border border-rose-gold/20 rotate-3 animate-bounce">
                   <svg
-                    className="w-6 h-6 text-accent"
+                    className="w-10 h-10 text-rose-gold"
                     fill="none"
                     stroke="currentColor"
                     viewBox="0 0 24 24"
@@ -97,113 +105,136 @@ export default function RSVPSection() {
                     <path
                       strokeLinecap="round"
                       strokeLinejoin="round"
-                      strokeWidth={2}
+                      strokeWidth={1.5}
                       d="M5 13l4 4L19 7"
                     />
                   </svg>
                 </div>
               </div>
-              <h3 className="text-2xl font-serif text-primary mb-2">
+              <h3 className="text-3xl font-serif text-burgundy mb-4">
                 Thank You!
               </h3>
-              <p className="text-foreground/70 font-light">
-                Your RSVP has been received. We look forward to celebrating with you!
+              <p className="text-burgundy/60 font-light text-lg italic font-serif">
+                Your RSVP has been received. <br /> We look forward to celebrating with you!
               </p>
             </Card>
           ) : (
-            <Card className="p-8 md:p-12 bg-background border-border">
-              <form onSubmit={handleSubmit} className="space-y-6">
-                <div>
-                  <label className="block text-sm font-medium text-foreground mb-2">
-                    Full Name
-                  </label>
-                  <Input
-                    type="text"
-                    name="name"
-                    value={formData.name}
-                    onChange={handleChange}
-                    placeholder="Enter your full name"
-                    required
-                    className="bg-background/50 border-border"
-                  />
+            <Card className="p-8 md:p-16 bg-white border-blush-pink shadow-2xl shadow-burgundy/5 rounded-4xl">
+              <form onSubmit={handleSubmit} className="space-y-8">
+                <div className="grid md:grid-cols-2 gap-8">
+                  <div className="space-y-3">
+                    <label className="block text-xs font-bold text-rose-gold tracking-[0.2em] uppercase">
+                      Full Name
+                    </label>
+                    <Input
+                      type="text"
+                      name="name"
+                      value={formData.name}
+                      onChange={handleChange}
+                      placeholder="Enter your full name"
+                      required
+                      className="h-14 bg-blush-pink/5 border-blush-pink/50 focus:border-rose-gold focus:ring-rose-gold/20 rounded-2xl"
+                    />
+                  </div>
+
+                  <div className="space-y-3">
+                    <label className="block text-xs font-bold text-rose-gold tracking-[0.2em] uppercase">
+                      Email Address
+                    </label>
+                    <Input
+                      type="email"
+                      name="email"
+                      value={formData.email}
+                      onChange={handleChange}
+                      placeholder="your.email@example.com"
+                      required
+                      className="h-14 bg-blush-pink/5 border-blush-pink/50 focus:border-rose-gold focus:ring-rose-gold/20 rounded-2xl"
+                    />
+                  </div>
                 </div>
 
-                <div>
-                  <label className="block text-sm font-medium text-foreground mb-2">
-                    Email Address
-                  </label>
-                  <Input
-                    type="email"
-                    name="email"
-                    value={formData.email}
-                    onChange={handleChange}
-                    placeholder="your.email@example.com"
-                    required
-                    className="bg-background/50 border-border"
-                  />
+                <div className="grid md:grid-cols-2 gap-8">
+                  <div className="space-y-3">
+                    <label className="block text-xs font-bold text-rose-gold tracking-[0.2em] uppercase">
+                      Attending?
+                    </label>
+                    <div className="relative group">
+                      <select
+                        name="attending"
+                        value={formData.attending}
+                        onChange={handleChange}
+                        className="w-full h-14 pl-4 pr-10 border border-blush-pink/50 rounded-2xl bg-blush-pink/5 text-burgundy font-medium appearance-none focus:outline-none focus:ring-2 focus:ring-rose-gold/20 focus:border-rose-gold transition-all"
+                      >
+                        <option value="yes">Yes, I'll be there!</option>
+                        <option value="no">Sorry, I can't attend</option>
+                        <option value="maybe">Maybe</option>
+                      </select>
+                      <div className="absolute right-4 top-1/2 -translate-y-1/2 pointer-events-none text-rose-gold group-hover:scale-110 transition-transform">
+                        <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+                        </svg>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div className="space-y-3">
+                    <label className="block text-xs font-bold text-rose-gold tracking-[0.2em] uppercase">
+                      Guests
+                    </label>
+                    <div className="relative group">
+                      <select
+                        name="guests"
+                        value={formData.guests}
+                        onChange={handleChange}
+                        className="w-full h-14 pl-4 pr-10 border border-blush-pink/50 rounded-2xl bg-blush-pink/5 text-burgundy font-medium appearance-none focus:outline-none focus:ring-2 focus:ring-rose-gold/20 focus:border-rose-gold transition-all"
+                      >
+                        <option value="">Select number</option>
+                        <option value="1">Just me</option>
+                        <option value="2">2 guests</option>
+                        <option value="3">3 guests</option>
+                        <option value="4">4 guests</option>
+                        <option value="5+">5+ guests</option>
+                      </select>
+                      <div className="absolute right-4 top-1/2 -translate-y-1/2 pointer-events-none text-rose-gold group-hover:scale-110 transition-transform">
+                        <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+                        </svg>
+                      </div>
+                    </div>
+                  </div>
                 </div>
 
-                <div>
-                  <label className="block text-sm font-medium text-foreground mb-2">
-                    Will you be attending?
-                  </label>
-                  <select
-                    name="attending"
-                    value={formData.attending}
-                    onChange={handleChange}
-                    className="w-full px-4 py-2 border border-border rounded-md bg-background/50 text-foreground focus:outline-none focus:ring-2 focus:ring-accent"
-                  >
-                    <option value="yes">Yes, I'll be there!</option>
-                    <option value="no">Sorry, I can't attend</option>
-                    <option value="maybe">Maybe</option>
-                  </select>
-                </div>
-
-                <div>
-                  <label className="block text-sm font-medium text-foreground mb-2">
-                    Number of Guests
-                  </label>
-                  <select
-                    name="guests"
-                    value={formData.guests}
-                    onChange={handleChange}
-                    className="w-full px-4 py-2 border border-border rounded-md bg-background/50 text-foreground focus:outline-none focus:ring-2 focus:ring-accent"
-                  >
-                    <option value="">Select number of guests</option>
-                    <option value="1">Just me</option>
-                    <option value="2">2 guests</option>
-                    <option value="3">3 guests</option>
-                    <option value="4">4 guests</option>
-                    <option value="5+">5+ guests</option>
-                  </select>
-                </div>
-
-                <div>
-                  <label className="block text-sm font-medium text-foreground mb-2">
-                    Dietary Restrictions (Optional)
+                <div className="space-y-3">
+                  <label className="block text-xs font-bold text-rose-gold tracking-[0.2em] uppercase">
+                    Dietary Restrictions
                   </label>
                   <Textarea
                     name="dietary"
                     value={formData.dietary}
                     onChange={handleChange}
-                    placeholder="Let us know about any dietary restrictions..."
-                    className="bg-background/50 border-border"
+                    placeholder="Let us know about any dietary requirements..."
+                    className="min-h-[120px] bg-blush-pink/5 border-blush-pink/50 focus:border-rose-gold focus:ring-rose-gold/20 rounded-2xl p-4 transition-all"
                   />
                 </div>
 
                 <Button
                   type="submit"
-                  className="w-full bg-accent text-accent-foreground hover:bg-accent/90 py-3 text-lg font-semibold"
+                  className="w-full h-16 bg-burgundy text-white hover:bg-rose-gold text-[10px] tracking-[0.3em] uppercase font-bold rounded-2xl shadow-xl shadow-burgundy/20 transition-all active:scale-95"
                 >
-                  Submit RSVP
+                  Confirm Registration
                 </Button>
               </form>
             </Card>
           )}
 
-          <p className="text-center text-foreground/60 text-sm mt-8 font-light">
-            Please RSVP by June 1st, 2024
-          </p>
+          <div className="mt-12 text-center space-y-2">
+            <p className="text-burgundy/40 text-[10px] tracking-[0.2em] uppercase font-bold">
+              Deadline for RSVP
+            </p>
+            <p className="text-rose-gold font-serif text-2xl italic">
+              June 1st, 2026
+            </p>
+          </div>
         </div>
       </div>
     </section>

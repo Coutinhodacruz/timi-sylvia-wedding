@@ -38,7 +38,7 @@ export default function SaveTheDateVideo({ onComplete }: SaveTheDateVideoProps) 
             <video
                 ref={videoRef}
                 className="w-full h-full object-cover"
-                src="/save%20the%20date%20.mp4"
+                src="/std_v2.mp4"
                 playsInline
                 autoPlay
                 muted={isMuted}
@@ -72,7 +72,7 @@ export default function SaveTheDateVideo({ onComplete }: SaveTheDateVideoProps) 
                 <div className="absolute bottom-8 left-8 right-8 pointer-events-auto">
                     <div className="h-1 bg-white/20 rounded-full overflow-hidden">
                         <div
-                            className="h-full bg-accent transition-[width] duration-300"
+                            className="h-full bg-rose-gold transition-[width] duration-300"
                             style={{
                                 width: `${progress}%`
                             }}

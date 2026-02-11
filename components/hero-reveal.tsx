@@ -36,16 +36,16 @@ export default function HeroReveal({ onComplete }: HeroRevealProps) {
                     playsInline
                     className="absolute inset-0 w-full h-full object-cover"
                 >
-                    <source src="/save%20the%20date%20.mp4" type="video/mp4" />
+                    <source src="/std_v2.mp4" type="video/mp4" />
                 </video>
-                <div className="absolute inset-0 bg-gradient-to-b from-black/60 via-black/20 to-black/70" />
+                <div className="absolute inset-0 bg-linear-to-b from-burgundy/60 via-burgundy/20 to-burgundy/70" />
 
                 {/* Animated particles/shimmer effect */}
                 <div className="absolute inset-0 overflow-hidden pointer-events-none">
                     {[...Array(20)].map((_, i) => (
                         <div
                             key={i}
-                            className="absolute w-1 h-1 bg-accent/30 rounded-full animate-float-particle"
+                            className="absolute w-1 h-1 bg-rose-gold/30 rounded-full animate-float-particle"
                             style={{
                                 left: `${Math.random() * 100}%`,
                                 top: `${Math.random() * 100}%`,
@@ -65,23 +65,23 @@ export default function HeroReveal({ onComplete }: HeroRevealProps) {
                 {/* Decorative line - Order 1 */}
                 <div className={`flex items-center justify-center gap-4 mb-4 md:mb-8 transition-all duration-700 delay-300 order-1 ${showContent ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-24'
                     }`}>
-                    <div className="h-px w-10 md:w-16 bg-gradient-to-r from-transparent to-accent" />
-                    <span className="text-accent text-xl md:text-2xl">♥</span>
-                    <div className="h-px w-10 md:w-16 bg-gradient-to-l from-transparent to-accent" />
+                    <div className="h-px w-10 md:w-16 bg-linear-to-r from-transparent to-rose-gold" />
+                    <span className="text-rose-gold text-xl md:text-2xl animate-pulse">♥</span>
+                    <div className="h-px w-10 md:w-16 bg-linear-to-l from-transparent to-rose-gold" />
                 </div>
 
                 {/* Couple names - Order 2 (Animate from bottom) */}
                 <h1 className={`text-6xl md:text-8xl lg:text-9xl font-serif text-white mb-2 md:mb-6 tracking-wide transition-all duration-1000 delay-500 order-2 drop-shadow-2xl ${showContent ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-[200px]'
                     }`}>
-                    <span className="block text-accent font-light">Sylvia</span>
-                    <span className="text-4xl md:text-5xl text-white/60 font-light">&</span>
-                    <span className="block text-accent font-light">Timi</span>
+                    <span className="block text-rose-gold font-light hover:scale-105 transition-transform duration-500 cursor-default">Sylvia</span>
+                    <span className="text-4xl md:text-5xl text-blush-pink/60 font-light">&</span>
+                    <span className="block text-rose-gold font-light hover:scale-105 transition-transform duration-500 cursor-default">Timi</span>
                 </h1>
 
                 {/* Date - Order 3 (Animate from bottom) */}
                 <div className={`mb-4 md:mb-8 transition-all duration-1000 delay-700 order-3 ${showContent ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-[250px]'
                     }`}>
-                    <p className="text-xl md:text-2xl text-white/90 font-light mb-1 drop-shadow-lg">
+                    <p className="text-xl md:text-2xl text-blush-pink font-light mb-1 drop-shadow-lg tracking-widest">
                         July 24th & 25th, 2026
                     </p>
 
@@ -90,10 +90,10 @@ export default function HeroReveal({ onComplete }: HeroRevealProps) {
                 {/* Hashtag - Order 4 (Animate from bottom) */}
                 <div className={`transition-all duration-1000 delay-900 order-4 mb-8 md:mb-12 ${showContent ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-[300px]'
                     }`}>
-                    <p className="text-lg md:text-xl tracking-[0.2em] text-white/70 font-light italic drop-shadow-lg">
-                        United in love, blessed by God
+                    <p className="text-lg md:text-xl tracking-[0.2em] text-white/90 font-light italic drop-shadow-lg">
+                        United in love, approved by God
                     </p>
-                    <p className="text-sm md:text-base tracking-widest text-accent/60 mt-2 uppercase font-medium">
+                    <p className="text-sm md:text-base tracking-widest text-rose-gold/80 mt-2 uppercase font-semibold">
                         #TSApproved
                     </p>
                 </div>
@@ -101,19 +101,18 @@ export default function HeroReveal({ onComplete }: HeroRevealProps) {
                 {/* Scroll prompt - Order 5 */}
                 <button
                     onClick={scrollToContent}
-                    className={`group inline-flex flex-col items-center gap-2 text-white/60 hover:text-accent transition-all duration-500 delay-1100 order-5 ${showContent ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-12'
-                        }`}
+                    className="group inline-flex flex-col items-center gap-2 text-white/80 hover:text-rose-gold transition-all duration-500 delay-1100 order-5"
                 >
-                    <span className="text-sm tracking-widest uppercase">Discover Our Story</span>
-                    <div className="w-6 h-10 border-2 border-current rounded-full flex justify-center p-2">
-                        <div className="w-1 h-2 bg-current rounded-full animate-bounce" />
+                    <span className="text-sm tracking-widest uppercase font-medium">Discover Our Story</span>
+                    <div className="w-6 h-10 border-2 border-rose-gold/50 rounded-full flex justify-center p-2 group-hover:border-rose-gold transition-colors">
+                        <div className="w-1 h-2 bg-rose-gold rounded-full animate-bounce" />
                     </div>
                 </button>
             </div>
 
             {/* Countdown at the bottom */}
             <div className={`absolute bottom-0 left-0 right-0 z-20 transition-all duration-1000 delay-300 ${showContent ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
-                <div className="bg-black/40 backdrop-blur-md py-4 border-t border-white/10">
+                <div className="bg-burgundy/40 backdrop-blur-md py-4 border-t border-rose-gold/20">
                     <div className="max-w-4xl mx-auto px-4">
                         <CountdownTimer />
                     </div>
