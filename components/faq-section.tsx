@@ -29,7 +29,7 @@ const faqData: FAQItem[] = [
     {
         category: 'Dress Code',
         question: 'What should I wear to the Traditional Wedding?',
-        answer: 'The color of the day is Chocolate Brown! We kindly ask guests to wear chocolate brown, neutrals, jewel tones, or warm earthy colors. Traditional Nigerian attire is highly encouraged. Please avoid red, forest green, lavender, and bright/neon colors.',
+        answer: 'The color of the day is Chocolate Brown! We kindly ask guests to wear chocolate brown, gold colors. Traditional Nigerian attire is highly encouraged. Please avoid red, forest green, lavender, and bright/neon colors.',
     },
     {
         category: 'Logistics',
@@ -45,11 +45,6 @@ const faqData: FAQItem[] = [
         category: 'Gifts',
         question: 'Do you have a gift registry?',
         answer: 'Your presence is the greatest gift! However, if you would like to bless us further, details can be found in the Gifts section of this website.',
-    },
-    {
-        category: 'Logistics',
-        question: 'Will there be food and drinks?',
-        answer: 'Absolutely! Both celebrations will feature a full reception with delicious food, drinks, and plenty of jollof rice. We promise you won\'t leave hungry! 🍛',
     },
     {
         category: 'Ceremony',

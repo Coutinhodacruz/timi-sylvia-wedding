@@ -142,7 +142,7 @@ export default function GuestbookSection() {
     <section
       ref={ref}
       id="guestbook"
-      className="py-20 md:py-32 bg-background px-4 md:px-8 relative overflow-hidden"
+      className="py-20 md:py-32 bg-linear-to-br from-purple-400 via-pink-200 to-orange-200 px-4 md:px-8 relative overflow-hidden"
     >
       {/* Decorative background elements */}
       <div className="absolute top-0 right-0 w-80 h-80 bg-rose-gold/5 rounded-full blur-3xl -mr-40 -mt-40 pointer-events-none" />
@@ -156,7 +156,7 @@ export default function GuestbookSection() {
               <Heart size={24} className="fill-rose-gold/20" />
             </div>
             <h2 className="text-3xl md:text-5xl font-serif text-burgundy mb-4 font-light text-center">
-              Guestbook
+              Leave Us a Prayer
             </h2>
             <p className="text-burgundy/50 text-center font-light italic font-serif text-lg">
               Leave a beautiful message for the couple as they begin this new chapter.
@@ -226,7 +226,7 @@ export default function GuestbookSection() {
                   Sending...
                 </>
               ) : (
-                'Sign Guestbook'
+                'Send Prayer'
               )}
             </button>
           </form>

@@ -8,7 +8,7 @@ export default function LoveStorySection() {
   return (
     <section
       ref={ref}
-      className="py-12 md:py-20 bg-background px-4 md:px-8 relative overflow-hidden"
+      className="py-12 md:py-20 bg-linear-to-br from-green-200 via-yellow-50 to-pink-200 px-4 md:px-8 relative overflow-hidden"
     >
       {/* Decorative background element */}
       <div className="absolute top-0 right-0 w-64 h-64 bg-rose-gold/5 rounded-full blur-3xl -mr-32 -mt-32 pointer-events-none" />

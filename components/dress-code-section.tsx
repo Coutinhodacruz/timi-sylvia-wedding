@@ -10,7 +10,7 @@ export default function DressCodeSection() {
         <section
             ref={ref}
             id="dress-code"
-            className="py-12 md:py-20 bg-background px-4 md:px-8 relative overflow-hidden"
+            className="py-12 md:py-20 bg-linear-to-br from-blush-pink-200 via-yellow-100 to-orange-200 px-4 md:px-8 relative overflow-hidden"
         >
             <div className="max-w-5xl mx-auto">
                 {/* Header */}
@@ -93,7 +93,7 @@ export default function DressCodeSection() {
                                     <div className="mt-12 p-8 bg-blush-pink/10 rounded-2xl border border-blush-pink/30 text-center shadow-inner">
                                         <p className="text-rose-gold text-xs font-bold tracking-[0.2em] uppercase mb-3">Quick Note on Attire</p>
                                         <p className="text-burgundy font-light italic text-lg">
-                                            Ladies, please refrain from wearing anything short or any dress with a white base. <br className="hidden md:block" /> Let the bride shine! 😊
+                                            Ladies, please refrain from wearing anything short or any dress with a white base.
                                         </p>
                                     </div>
                                 </div>
@@ -117,7 +117,7 @@ export default function DressCodeSection() {
                                     <div className="max-w-3xl mb-12 text-center md:text-left">
                                         <h4 className="text-2xl font-serif text-burgundy mb-4">Traditional Attire</h4>
                                         <p className="text-burgundy/70 font-light leading-relaxed text-lg">
-                                            The color of the day is <span className="text-rose-gold font-bold">Chocolate Brown</span>. We kindly ask guests to wear chocolate brown, neutrals, jewel tones, or warm earthy colors that celebrate the beauty of traditional Nigerian attire.
+                                            The color of the day is <span className="text-rose-gold font-bold">Chocolate Brown</span>. We kindly ask guests to wear chocolate brown that celebrate the beauty of traditional Nigerian attire.
                                         </p>
                                     </div>
 
@@ -126,23 +126,18 @@ export default function DressCodeSection() {
                                         <h5 className="text-center text-xs tracking-[0.3em] text-rose-gold uppercase font-bold">Suggested Palette</h5>
                                         <div className="flex flex-wrap justify-center gap-6 md:gap-10">
                                             {[
-                                                { name: 'Chocolate Brown', hex: '#3E2723', highlight: true },
-                                                // { name: 'Ivory', hex: '#FFFFF0' },
-                                                // { name: 'Champagne', hex: '#F7E7CE' },
-                                                // { name: 'Taupe', hex: '#483C32' },
-                                                // { name: 'Teal', hex: '#008080' },
-                                                // { name: 'Emerald', hex: '#50C878' },
-                                                // { name: 'Royal Blue', hex: '#4169E1' },
-                                                // { name: 'Plum', hex: '#8E4585' },
-                                                // { name: 'Rust', hex: '#B7410E' },
-                                                // { name: 'Burnt Orange', hex: '#CC5500' }
+                                                { name: 'Chocolate Brown', hex: '#3E2723', highlight: true, goldHighlight: false },
+                                                { name: 'Gold', hex: '#B8860B', highlight: true, goldHighlight: true }
                                             ].map((color) => (
                                                 <div key={color.name} className="flex flex-col items-center gap-3 group">
                                                     <div
-                                                        className={`w-14 h-14 md:w-20 md:h-20 rounded-full border border-burgundy/5 shadow-lg transition-all duration-500 group-hover:scale-110 group-hover:shadow-rose-gold/20 ${color.highlight ? 'ring-4 ring-rose-gold ring-offset-4 ring-offset-white scale-110' : ''}`}
+                                                        className={`w-14 h-14 md:w-20 md:h-20 rounded-full border border-burgundy/5 shadow-lg transition-all duration-500 group-hover:scale-110 group-hover:shadow-rose-gold/20 ${color.highlight && !color.goldHighlight ? 'ring-4 ring-rose-gold ring-offset-4 ring-offset-white scale-110' : ''} ${color.goldHighlight ? 'ring-4 ring-[#B8860B] ring-offset-4 ring-offset-white scale-110 shadow-[0_0_15px_rgba(255,215,0,0.4)]' : ''}`}
                                                         style={{ backgroundColor: color.hex }}
                                                     />
-                                                    <span className={`text-[10px] md:text-xs tracking-wider transition-colors ${color.highlight ? 'text-rose-gold font-bold uppercase' : 'text-burgundy/60 group-hover:text-burgundy font-medium uppercase'}`}>{color.name}</span>
+                                                    <span
+                                                        className={`text-[10px] md:text-xs tracking-wider transition-colors ${color.highlight && !color.goldHighlight ? 'text-rose-gold font-bold uppercase' : ''} ${color.goldHighlight ? 'font-bold uppercase' : ''} ${!color.highlight ? 'text-burgundy/60 group-hover:text-burgundy font-medium uppercase' : ''}`}
+                                                        style={color.goldHighlight ? { color: '#B8860B' } : {}}
+                                                    >{color.name}</span>
                                                 </div>
                                             ))}
                                         </div>

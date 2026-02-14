@@ -20,7 +20,7 @@ export default function EventDetailsSection() {
         {/* Header */}
         <div className={`text-center mb-16 transition-all duration-700 ${isInView ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
           <h2 className="text-3xl md:text-5xl font-serif mb-6 font-light leading-tight text-burgundy">
-            <span className="bg-clip-text text-transparent bg-linear-to-r from-burgundy via-rose-gold to-burgundy animate-gradient-x">
+            <span className="bg-clip-text text-burgundy bg-linear-to-r from-burgundy via-rose-gold to-burgundy animate-gradient-x">
               By the Grace of God
             </span>
           </h2>
@@ -109,7 +109,7 @@ export default function EventDetailsSection() {
 
           <div className="space-y-8">
             <p className="text-burgundy font-medium italic text-xl max-w-2xl mx-auto text-center leading-relaxed">
-              "Due to limited space, we kindly ask that ONLY those named on the e-invitation attend. Thank you for your understanding."
+              Due to limited space, we kindly ask that ONLY those named on the e-invitation attend. Thank you for your understanding.
             </p>
 
             <div className="grid sm:grid-cols-2 gap-4 max-w-3xl mx-auto">
