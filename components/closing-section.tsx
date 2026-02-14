@@ -1,6 +1,6 @@
 'use client'
 
-import { Heart, MessageCircle } from 'lucide-react'
+import { Heart, MessageCircle, Flower2, Sparkles } from 'lucide-react'
 import { useScrollAnimation } from '@/hooks/use-scroll-animation'
 
 export default function ClosingSection() {
@@ -36,45 +36,62 @@ export default function ClosingSection() {
 
       <div className="max-w-4xl mx-auto relative z-10">
         {/* Quote section */}
-        <div className={`mb-16 transition-all duration-1000 ${isInView ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-12'}`}>
-          <h2 className="text-4xl md:text-6xl font-serif text-burgundy mb-10 font-light tracking-tight">
-            Our Journey <span className="text-rose-gold italic">Continues</span>
-          </h2>
-
-          <div className="relative inline-block px-12 py-4">
-            <div className="absolute top-0 left-0 text-rose-gold/20 text-6xl font-serif">"</div>
-            <p className="text-xl md:text-3xl text-burgundy/80 font-serif italic leading-relaxed max-w-2xl mx-auto">
-              I don't want the heavens or the shooting stars. I don't want no gemstones or shining golds. All I want is a steady hand. A kind soul. Within you.
-            </p>
-            <div className="absolute bottom-0 right-0 text-rose-gold/20 text-6xl font-serif">"</div>
-          </div>
-
-          <p className="text-rose-gold font-bold tracking-[0.3em] uppercase text-xs mt-8">
-            – Sylvia & Timi
-          </p>
-        </div>
-
-        {/* Three values */}
-        <div className={`grid md:grid-cols-3 gap-8 md:gap-12 mb-24 transition-all duration-1000 delay-300 ${isInView ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-12'}`}>
-          {[
-            { icon: "✨", title: "Dream", desc: "Building a future filled with hope and shared vision.", delay: "0s" },
-            { icon: <Heart className="w-7 h-7 text-rose-gold" />, title: "Love", desc: "Unwavering, unconditional, and eternally blessed.", delay: "0.2s" },
-            { icon: "🤝", title: "Promises", desc: "Kept and renewed, through every season of life.", delay: "0.4s" }
-          ].map((item, idx) => (
+        {/* Floral Bed of Love */}
+        <div className={`relative mb-24 py-24 rounded-[3rem] bg-linear-to-br from-rose-gold/10 via-pink-100/30 to-rose-gold/10 overflow-hidden border border-white/50 shadow-2xl shadow-rose-gold/10 transition-all duration-1000 ${isInView ? 'opacity-100 scale-100' : 'opacity-0 scale-95'}`}>
+          {/* Animated Background Flowers */}
+          {[...Array(15)].map((_, i) => (
             <div
-              key={idx}
-              className="group p-8 rounded-4xl bg-white border border-blush-pink/50 hover:border-rose-gold transition-all duration-500 shadow-xl shadow-burgundy/5 hover:-translate-y-2"
-              style={{ transitionDelay: item.delay }}
+              key={`flower-${i}`}
+              className="absolute animate-pulse"
+              style={{
+                left: `${Math.random() * 100}%`,
+                top: `${Math.random() * 100}%`,
+                animationDelay: `${Math.random() * 5}s`,
+                animationDuration: `${3 + Math.random() * 4}s`,
+                opacity: 0.1 + Math.random() * 0.1,
+                transform: `rotate(${Math.random() * 360}deg) scale(${0.5 + Math.random()})`
+              }}
             >
-              <div className="w-14 h-14 mx-auto rounded-2xl bg-blush-pink/20 flex items-center justify-center mb-6 border border-blush-pink/30 group-hover:scale-110 transition-transform duration-500">
-                <span className="text-2xl">{item.icon}</span>
-              </div>
-              <h3 className="text-2xl font-serif text-burgundy mb-4 font-medium transition-colors group-hover:text-rose-gold">{item.title}</h3>
-              <p className="text-burgundy/60 font-light text-sm leading-relaxed font-serif">
-                {item.desc}
-              </p>
+              <Flower2
+                size={40 + Math.random() * 60}
+                className="text-rose-gold"
+                strokeWidth={1}
+              />
             </div>
           ))}
+
+          {/* Central Animated Element */}
+          <div className="relative z-10 flex flex-col items-center justify-center">
+            <div className="relative mb-8">
+              <div className="absolute inset-0 bg-rose-gold/30 blur-3xl rounded-full scale-150 animate-pulse" />
+              <div className="relative animate-float-heart">
+                <Heart
+                  size={120}
+                  className="text-rose-gold/80 fill-rose-gold/20"
+                  strokeWidth={0.5}
+                />
+                <Sparkles
+                  className="absolute -top-4 -right-4 text-rose-gold animate-bounce"
+                  size={32}
+                />
+                <Sparkles
+                  className="absolute -bottom-2 -left-4 text-rose-gold animate-bounce"
+                  style={{ animationDelay: '1s' }}
+                  size={24}
+                />
+              </div>
+            </div>
+
+            <h2 className="text-5xl md:text-7xl font-serif text-burgundy/80 font-light italic mb-2 tracking-wide">
+              Love
+            </h2>
+            <div className="h-px w-24 bg-rose-gold/50 my-4" />
+            <div className="flex gap-3 text-rose-gold/60">
+              <Flower2 size={24} className="animate-spin" style={{ animationDuration: '10s' }} />
+              <Flower2 size={24} className="animate-spin" style={{ animationDuration: '15s' }} />
+              <Flower2 size={24} className="animate-spin" style={{ animationDuration: '12s' }} />
+            </div>
+          </div>
         </div>
 
         {/* Hashtag section */}
