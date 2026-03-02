@@ -15,7 +15,7 @@ export default function GiftsSection() {
     }
 
     const bankDetails = {
-        email: 'tsaaproved2026@gmail.com',
+        email: 'tsaapproved2026@gmail.com',
         institution: '703',
         transit: '00001',
         account: '31750912',
@@ -74,7 +74,7 @@ export default function GiftsSection() {
                                 <div className="space-y-4">
                                     <div className="flex items-center justify-between p-4 bg-blush-pink/5 border border-blush-pink/30 rounded-2xl group/input transition-all hover:bg-blush-pink/10">
                                         <div className="flex flex-col">
-                                            <span className="text-[8px] tracking-widest text-rose-gold uppercase font-bold mb-1">Email Address (Zelle/E-Transfer)</span>
+                                            <span className="text-[8px] tracking-widest text-rose-gold uppercase font-bold mb-1">Email Address (PayPal/E-Transfer)</span>
                                             <span className="text-sm text-burgundy font-medium">{bankDetails.email}</span>
                                         </div>
                                         <button

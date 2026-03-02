@@ -50,7 +50,7 @@ export default function FooterSection() {
             <div className="space-y-4 text-sm font-medium">
               <p className="text-white/70 flex flex-col items-center md:items-start gap-1">
                 <span className="text-[8px] uppercase tracking-widest text-rose-gold/50">Say hello at</span>
-                tsaaproved2026@gmail.com
+                tsaapproved2026@gmail.com
               </p>
               <p className="text-white/70 flex flex-col items-center md:items-start gap-1">
                 <span className="text-[8px] uppercase tracking-widest text-rose-gold/50">Date of celebration</span>

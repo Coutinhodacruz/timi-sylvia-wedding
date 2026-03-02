@@ -34,7 +34,7 @@ export default function DressCodeSection() {
                                     <h3 className="text-3xl md:text-4xl font-serif text-rose-gold font-light">
                                         Friday, July 24th
                                     </h3>
-                                    <span className="text-burgundy/40 tracking-[0.2em] uppercase text-xs mb-2 font-bold">The White Wedding</span>
+                                    <span className="text-burgundy/40 tracking-[0.2em] uppercase text-xs mb-2 font-bold">The Joining Ceremony</span>
                                 </div>
 
                                 <div className="bg-white rounded-3xl p-8 md:p-12 border border-blush-pink shadow-xl shadow-burgundy/5">
@@ -110,7 +110,7 @@ export default function DressCodeSection() {
                                     <h3 className="text-3xl md:text-4xl font-serif text-rose-gold font-light">
                                         Saturday, July 25th
                                     </h3>
-                                    <span className="text-burgundy/40 tracking-[0.2em] uppercase text-xs mb-2 font-bold">The Traditional Wedding</span>
+                                    <span className="text-burgundy/40 tracking-[0.2em] uppercase text-xs mb-2 font-bold">The Traditional Ceremony</span>
                                 </div>
 
                                 <div className="bg-white rounded-3xl p-8 md:p-12 border border-blush-pink shadow-xl shadow-burgundy/5">
