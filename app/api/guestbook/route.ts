@@ -1,5 +1,7 @@
 import { NextRequest, NextResponse } from "next/server";
 import nodemailer from "nodemailer";
+import fs from 'fs';
+import path from 'path';
 
 const transporter = nodemailer.createTransport({
     service: "gmail",
@@ -8,6 +10,45 @@ const transporter = nodemailer.createTransport({
         pass: process.env.EMAIL_PASSWORD,
     },
 });
+
+// File path for storing guestbook entries
+const GUESTBOOK_FILE = path.join(process.cwd(), 'data', 'guestbook.json');
+
+// Ensure data directory exists
+function ensureDataDirectory() {
+    const dataDir = path.dirname(GUESTBOOK_FILE);
+    if (!fs.existsSync(dataDir)) {
+        fs.mkdirSync(dataDir, { recursive: true });
+    }
+}
+
+// Read guestbook entries from file
+function readGuestbookEntries() {
+    try {
+        if (!fs.existsSync(GUESTBOOK_FILE)) {
+            return [];
+        }
+        const data = fs.readFileSync(GUESTBOOK_FILE, 'utf8');
+        return JSON.parse(data);
+    } catch (error) {
+        console.error('Error reading guestbook entries:', error);
+        return [];
+    }
+}
+
+// Save guestbook entry to file
+function saveGuestbookEntry(entry: any) {
+    try {
+        ensureDataDirectory();
+        const entries = readGuestbookEntries();
+        entries.unshift(entry); // Add new entry at the beginning
+        fs.writeFileSync(GUESTBOOK_FILE, JSON.stringify(entries, null, 2));
+        return true;
+    } catch (error) {
+        console.error('Error saving guestbook entry:', error);
+        return false;
+    }
+}
 
 // Beautiful auto-reply email template for the guest
 function buildGuestAutoReplyTemplate(guestName: string): string {
@@ -287,6 +328,19 @@ function buildCoupleNotificationTemplate(
 </html>`;
 }
 
+export async function GET() {
+    try {
+        const entries = readGuestbookEntries();
+        return NextResponse.json({ entries });
+    } catch (error) {
+        console.error('Error fetching guestbook entries:', error);
+        return NextResponse.json(
+            { error: 'Failed to fetch guestbook entries' },
+            { status: 500 }
+        );
+    }
+}
+
 export async function POST(req: NextRequest) {
     try {
         const { name, email, message } = await req.json();
@@ -296,6 +350,32 @@ export async function POST(req: NextRequest) {
             return NextResponse.json(
                 { error: "Name and message are required" },
                 { status: 400 }
+            );
+        }
+
+        // Create entry object
+        const newEntry = {
+            id: Date.now().toString(),
+            name,
+            email: email || '',
+            message,
+            date: new Date().toLocaleString('en-US', {
+                year: 'numeric',
+                month: 'long',
+                day: 'numeric',
+                hour: '2-digit',
+                minute: '2-digit',
+                hour12: true,
+            }),
+            createdAt: new Date().toISOString()
+        };
+
+        // Save to file
+        const saved = saveGuestbookEntry(newEntry);
+        if (!saved) {
+            return NextResponse.json(
+                { error: 'Failed to save guestbook entry' },
+                { status: 500 }
             );
         }
 
@@ -323,6 +403,7 @@ export async function POST(req: NextRequest) {
             {
                 success: true,
                 message: "Guestbook entry submitted successfully",
+                entry: newEntry
             },
             { status: 200 }
         );

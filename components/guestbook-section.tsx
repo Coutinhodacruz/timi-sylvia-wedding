@@ -16,49 +16,32 @@ interface GuestbookEntry {
 
 export default function GuestbookSection() {
   const { ref, isInView } = useScrollAnimation({ threshold: 0.05, triggerOnce: true })
-  const [entries, setEntries] = useState<GuestbookEntry[]>([
-    {
-      id: '1',
-      name: 'Veragold',
-      message: 'God bless your home',
-      date: 'January 24, 2026 6:38 am',
-    },
-    {
-      id: '2',
-      name: 'Uche and wife',
-      message: 'May God continue to bless your union',
-      date: 'January 23, 2026 7:00 am',
-    },
-    {
-      id: '3',
-      name: 'Olumide Johnson Fatokun',
-      message: 'May this renewal bring renewed joy, fulfillment and enduring love in Jesus name.',
-      date: 'January 19, 2026 8:47 am',
-    },
-    {
-      id: '4',
-      name: 'Dr Peju',
-      message: 'May God continue to keep your home.',
-      date: 'January 19, 2026 5:14 am',
-    },
-    {
-      id: '5',
-      name: 'Mr. Frank and Wife',
-      message: 'May God continue to bless your union in Jesus mighty name Amen',
-      date: 'January 18, 2026 10:51 am',
-    },
-    {
-      id: '6',
-      name: 'Margaret Iyawe',
-      message: 'God will continue to uphold you and sustain you both. Congratulations',
-      date: 'January 18, 2026 6:37 am',
-    },
-  ])
+  const [entries, setEntries] = useState<GuestbookEntry[]>([])
   const [formData, setFormData] = useState({ name: '', email: '', message: '' })
   const [submitted, setSubmitted] = useState(false)
   const [isSubmitting, setIsSubmitting] = useState(false)
   const [error, setError] = useState('')
   const [isVisible, setIsVisible] = useState(false)
+  const [isLoading, setIsLoading] = useState(true)
+
+  // Fetch guestbook entries from API
+  const fetchEntries = async () => {
+    try {
+      const response = await fetch('/api/guestbook')
+      if (response.ok) {
+        const data = await response.json()
+        setEntries(data.entries || [])
+      }
+    } catch (error) {
+      console.error('Error fetching guestbook entries:', error)
+    } finally {
+      setIsLoading(false)
+    }
+  }
+
+  useEffect(() => {
+    fetchEntries()
+  }, [])
 
   useEffect(() => {
     const observer = new IntersectionObserver((entries) => {
@@ -113,20 +96,11 @@ export default function GuestbookSection() {
         throw new Error('Failed to submit')
       }
 
-      const newEntry: GuestbookEntry = {
-        id: Date.now().toString(),
-        name: formData.name,
-        message: formData.message,
-        date: new Date().toLocaleString('en-US', {
-          year: 'numeric',
-          month: 'long',
-          day: 'numeric',
-          hour: '2-digit',
-          minute: '2-digit',
-          hour12: true,
-        }),
+      const result = await response.json()
+      if (result.success && result.entry) {
+        // Add the new entry to the top of the list
+        setEntries([result.entry, ...entries])
       }
-      setEntries([newEntry, ...entries])
       setSubmitted(true)
       setFormData({ name: '', email: '', message: '' })
       setTimeout(() => setSubmitted(false), 4000)
@@ -241,7 +215,22 @@ export default function GuestbookSection() {
         </div>
 
         <div className={`grid md:grid-cols-2 gap-8 transition-all duration-700 delay-200 ${isInView ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
-          {entries.map((entry, idx) => (
+          {isLoading ? (
+            <div className="col-span-2 text-center py-12">
+              <Loader2 className="animate-spin mx-auto mb-4 text-rose-gold" size={32} />
+              <p className="text-burgundy/50 font-light italic font-serif">Loading beautiful messages...</p>
+            </div>
+          ) : entries.length === 0 ? (
+            <div className="col-span-2 text-center py-12">
+              <div className="flex flex-col items-center">
+                <div className="w-16 h-16 rounded-full bg-rose-gold/10 flex items-center justify-center mb-4">
+                  <Heart size={32} className="text-rose-gold/30" />
+                </div>
+                <p className="text-burgundy/50 font-light italic font-serif text-lg">No messages yet. Be the first to leave a beautiful prayer!</p>
+              </div>
+            </div>
+          ) : (
+            entries.map((entry, idx) => (
             <div
               key={entry.id}
               className="bg-white rounded-4xl p-8 border border-blush-pink/50 hover:border-rose-gold/30 hover:shadow-xl hover:shadow-burgundy/5 transition-all duration-500 relative group"
@@ -266,7 +255,8 @@ export default function GuestbookSection() {
                 </div>
               </div>
             </div>
-          ))}
+          ))
+          )}
         </div>
       </div>
     </section>
