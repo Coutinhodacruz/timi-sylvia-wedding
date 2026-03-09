@@ -45,6 +45,7 @@ export default function EventDetailsSection() {
               <p className="text-3xl font-serif text-burgundy font-light">Friday</p>
               <p className="text-2xl text-rose-gold font-medium">July 24th, 2026</p>
               <p className="text-lg text-burgundy/60 font-light italic">4:00 PM</p>
+              <p className="text-sm text-burgundy/80 font-medium italic">Guests to be seated at 2pm</p>
             </div>
 
             <div className="flex items-start justify-center gap-2 text-burgundy/70 text-sm mb-8">
@@ -75,9 +76,10 @@ export default function EventDetailsSection() {
             <p className="text-xs text-rose-gold/80 mb-6 tracking-[0.2em] uppercase font-bold">Celebration of Culture</p>
 
             <div className="space-y-3 mb-8 py-6 border-y border-white/10">
-              <p className="text-3xl font-serif text-burgundy font-light">Saturday</p>
+              <p className="text-3xl font-serif text-white font-light">Saturday</p>
               <p className="text-2xl text-rose-gold font-medium">July 25th, 2026</p>
-              <p className="text-lg text-burgundy font-light italic">2:00 PM</p>
+              <p className="text-lg text-white/80 font-light italic">2:00 PM</p>
+              <p className="text-sm text-white/80 font-medium">Guests to be seated at 2pm</p>
             </div>
 
             <div className="flex items-start justify-center gap-2 text-burgundy text-sm mb-8">
@@ -147,7 +149,7 @@ export default function EventDetailsSection() {
               Booking Deadline: April 15th, 2026
             </p>
           </div>
-          
+
           <div className="space-y-4 max-w-2xl mx-auto mb-8">
             <div className="bg-white/10 rounded-2xl p-6 border border-white/20">
               <p className="text-white font-medium mb-2">To confirm your booking:</p>
@@ -158,7 +160,7 @@ export default function EventDetailsSection() {
               <p className="text-blush-pink text-sm">Send Interac payments to <span className="font-bold">boonspaceca@gmail.com</span></p>
             </div>
           </div>
-          
+
           <a
             href="mailto:tsapprovedenquiries@gmail.com?subject=Wedding%20Room%20Booking%20Request"
             className="inline-block px-10 py-4 rounded-full bg-rose-gold text-white font-bold tracking-widest text-xs uppercase hover:bg-white hover:text-burgundy transition-all shadow-xl shadow-rose-gold/20"
