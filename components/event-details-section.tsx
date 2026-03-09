@@ -76,10 +76,10 @@ export default function EventDetailsSection() {
             <p className="text-xs text-rose-gold/80 mb-6 tracking-[0.2em] uppercase font-bold">Celebration of Culture</p>
 
             <div className="space-y-3 mb-8 py-6 border-y border-white/10">
-              <p className="text-3xl font-serif text-white font-light">Saturday</p>
+              <p className="text-3xl font-serif text-burgundy font-light">Saturday</p>
               <p className="text-2xl text-rose-gold font-medium">July 25th, 2026</p>
-              <p className="text-lg text-white/80 font-light italic">2:00 PM</p>
-              <p className="text-sm text-white/80 font-medium">Guests to be seated at 2pm</p>
+              <p className="text-lg text-burgundy font-light italic">2:00 PM</p>
+              <p className="text-sm text-burgundy font-light italic">Guests to be seated at 2pm</p>
             </div>
 
             <div className="flex items-start justify-center gap-2 text-burgundy text-sm mb-8">
