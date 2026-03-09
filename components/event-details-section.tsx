@@ -45,7 +45,7 @@ export default function EventDetailsSection() {
               <p className="text-3xl font-serif text-burgundy font-light">Friday</p>
               <p className="text-2xl text-rose-gold font-medium">July 24th, 2026</p>
               <p className="text-lg text-burgundy/60 font-light italic">4:00 PM</p>
-              <p className="text-sm text-burgundy/80 font-medium italic">Guests to be seated at 2pm</p>
+              <p className="text-sm text-burgundy/80 font-medium italic">Guests to be seated at 4pm</p>
             </div>
 
             <div className="flex items-start justify-center gap-2 text-burgundy/70 text-sm mb-8">
