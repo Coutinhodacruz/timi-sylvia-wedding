@@ -81,7 +81,7 @@ export default function HeroReveal({ onComplete }: HeroRevealProps) {
                 {/* Date - Order 3 (Animate from bottom) */}
                 <div className={`mb-4 md:mb-8 transition-all duration-1000 delay-700 order-3 ${showContent ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-[250px]'
                     }`}>
-                    <p className="text-xl md:text-2xl text-blush-pink font-light mb-1 drop-shadow-lg tracking-widest">
+                    <p className="text-xl md:text-2xl text-pink-200 font-light mb-1 drop-shadow-lg tracking-widest">
                         July 24th & 25th, 2026
                     </p>
 
@@ -93,7 +93,7 @@ export default function HeroReveal({ onComplete }: HeroRevealProps) {
                     <p className="text-lg md:text-xl tracking-[0.2em] text-white/90 font-light italic drop-shadow-lg">
                         United in love, approved by God
                     </p>
-                    <p className="text-sm md:text-base tracking-widest text-rose-gold/80 mt-2 uppercase font-semibold">
+                    <p className="text-sm md:text-base tracking-widest text-yellow-50 mt-2 uppercase font-semibold">
                         #TSApproved
                     </p>
                 </div>
