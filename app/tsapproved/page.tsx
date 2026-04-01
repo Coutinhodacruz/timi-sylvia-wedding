@@ -1,7 +1,9 @@
 'use client'
 
-import { useState, useEffect, useRef } from 'react'
+import { useState, useEffect, useRef, Suspense } from 'react'
+import { useSearchParams } from 'next/navigation'
 import InvitationLanding from '@/components/invitation-landing'
+import VerifyOTP from '@/components/verify-otp'
 import HeroReveal from '@/components/hero-reveal'
 import LoveStorySection from '@/components/love-story-section'
 import CoupleProfilesSection from '@/components/couple-profiles-section'
@@ -14,7 +16,11 @@ import FAQSection from '@/components/faq-section'
 import ClosingSection from '@/components/closing-section'
 import SaveTheDateVideo from '@/components/save-the-date-video'
 
-export default function WeddingPage() {
+function WeddingPageContent() {
+  const searchParams = useSearchParams()
+  const gParam = searchParams.get('g')
+
+  const [isOtpVerified, setIsOtpVerified] = useState(false)
   const [isInvitationOpen, setIsInvitationOpen] = useState(false)
   const audioRef = useRef<HTMLAudioElement | null>(null)
 
@@ -39,7 +45,11 @@ export default function WeddingPage() {
 
   return (
     <>
-      {!isInvitationOpen && (
+      {!isOtpVerified && (
+        <VerifyOTP emailHex={gParam} onVerified={() => setIsOtpVerified(true)} />
+      )}
+
+      {isOtpVerified && !isInvitationOpen && (
         <InvitationLanding
           onOpen={() => setIsInvitationOpen(true)}
           onStartMusic={handleStartMusic}
@@ -65,5 +75,17 @@ export default function WeddingPage() {
         </main>
       )}
     </>
+  )
+}
+
+export default function WeddingPage() {
+  return (
+    <Suspense fallback={
+      <div className="min-h-screen bg-[#0D0D0D] flex items-center justify-center">
+        <p className="text-[#C9A86B] font-serif tracking-widest text-xl animate-pulse">Loading...</p>
+      </div>
+    }>
+      <WeddingPageContent />
+    </Suspense>
   )
 }
