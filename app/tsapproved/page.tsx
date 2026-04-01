@@ -46,7 +46,12 @@ function WeddingPageContent() {
   return (
     <>
       {!isOtpVerified && (
-        <VerifyOTP emailHex={gParam} onVerified={() => setIsOtpVerified(true)} />
+        <VerifyOTP emailHex={gParam} onVerified={() => {
+          setIsOtpVerified(true)
+          if (typeof window !== 'undefined') {
+            window.history.replaceState(null, '', window.location.pathname)
+          }
+        }} />
       )}
 
       {isOtpVerified && !isInvitationOpen && (

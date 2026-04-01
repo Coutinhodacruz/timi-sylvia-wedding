@@ -89,6 +89,17 @@ export default function VerifyOTP({ emailHex, onVerified }: VerifyOTPProps) {
                       }
                     }
                   }}
+                  onPaste={(e) => {
+                    e.preventDefault()
+                    const pastedData = e.clipboardData.getData('text/plain').replace(/[^0-9]/g, '').slice(0, 4)
+                    if (pastedData) {
+                      setOtp(pastedData)
+                      // Auto-focus the last filled input or the end
+                      const targetIndex = Math.min(pastedData.length, 3)
+                      const targetInput = e.currentTarget.parentElement?.children[targetIndex] as HTMLInputElement
+                      if (targetInput) targetInput.focus()
+                    }
+                  }}
                   onKeyDown={(e) => {
                     // Handle backspace
                     if (e.key === 'Backspace') {
