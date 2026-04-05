@@ -19,10 +19,10 @@ const API_URL = "http://localhost:3000/api/send-invites";
 
 const RECIPIENTS = [
   "coutinhodacruz10@gmail.com",
-  "dominicrotimi@gmail.com",
-  "dehet28746@availors.com",
-  // "sylviaokonofua@gmail.com",
-  // "adepekun94@gmail.com",
+  // "dominicrotimi@gmail.com",
+  // "dehet28746@availors.com",
+  "sylviaokonofua@gmail.com",
+  "adepekun94@gmail.com",
   // "Boonspaceca@gmail.com",
 ];
 

@@ -117,7 +117,7 @@ export default function DressCodeSection() {
                                     <div className="max-w-3xl mb-12 text-center md:text-left">
                                         <h4 className="text-2xl font-serif text-burgundy mb-4">Traditional Attire</h4>
                                         <p className="text-burgundy/70 font-light leading-relaxed text-lg">
-                                            The color of the day is <span className="text-rose-gold font-bold">Chocolate Brown</span>. We kindly ask guests to wear chocolate brown that celebrate the beauty of traditional Nigerian attire.
+                                            The colors of the day are <span className="text-rose-gold font-bold">Brown Fabric and Gold Gele or Fila</span>. We kindly ask guests to wear outfits that celebrate the beauty of traditional Nigerian attire.
                                         </p>
                                     </div>
 
@@ -126,8 +126,8 @@ export default function DressCodeSection() {
                                         <h5 className="text-center text-xs tracking-[0.3em] text-rose-gold uppercase font-bold">Suggested Palette</h5>
                                         <div className="flex flex-wrap justify-center gap-6 md:gap-10">
                                             {[
-                                                { name: 'Chocolate Brown', hex: '#3E2723', highlight: true, goldHighlight: false },
-                                                { name: 'Gold', hex: '#B8860B', highlight: true, goldHighlight: true }
+                                                { name: 'Brown Fabric', hex: '#3E2723', highlight: true, goldHighlight: false },
+                                                { name: 'Gold Gele or Fila', hex: '#B8860B', highlight: true, goldHighlight: true }
                                             ].map((color) => (
                                                 <div key={color.name} className="flex flex-col items-center gap-3 group">
                                                     <div
