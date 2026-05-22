@@ -11,9 +11,50 @@ function generateOTP(email: string): string {
   return (intVal % 10000).toString().padStart(4, '0');
 }
 
-function getEmailTemplate(recipientEmail: string, otp: string): string {
+function getEmailTemplate(recipientEmail: string, otp: string, plusOne?: boolean, total: number = 1): string {
   const emailHex = Buffer.from(recipientEmail).toString('hex');
   const personalizedLink = `${INVITE_LINK}?g=${emailHex}`;
+
+  const guestNote = total > 1 
+    ? `<table role="presentation" cellpadding="0" cellspacing="0" width="100%" style="margin-top: 25px;">
+        <tr>
+          <td align="center" style="
+            background: linear-gradient(90deg, transparent, rgba(201, 168, 107, 0.1), transparent);
+            padding: 18px 0;
+            border-top: 1px solid rgba(201, 168, 107, 0.15);
+            border-bottom: 1px solid rgba(201, 168, 107, 0.15);
+          ">
+            <p style="
+              font-family: 'Georgia', 'Times New Roman', serif;
+              font-size: 11px;
+              color: #C9A86B;
+              text-transform: uppercase;
+              letter-spacing: 4px;
+              margin: 0 0 8px 0;
+              font-weight: bold;
+            ">Exclusive Invitation</p>
+            <p style="
+              font-family: 'Georgia', 'Times New Roman', serif;
+              font-size: 18px;
+              color: #ffffff;
+              margin: 0;
+              font-style: italic;
+              line-height: 1.4;
+            ">
+             This invitation is valid for you and your guest of <span style="color: #E0C097; font-weight: bold; font-size: 22px;">${total}</span>
+            </p>
+            <p style="
+              font-family: 'Georgia', 'Times New Roman', serif;
+              font-size: 13px;
+              color: #a0a0b0;
+              margin: 10px 0 0 0;
+              font-style: italic;
+            ">Please share your unique access code below for entry</p>
+          </td>
+        </tr>
+      </table>` 
+    : '';
+
   return `
 <!DOCTYPE html>
 <html lang="en">
@@ -136,7 +177,7 @@ function getEmailTemplate(recipientEmail: string, otp: string): string {
 
           <!-- Message body -->
           <tr>
-            <td align="center" style="padding: 30px 50px;">
+            <td align="center" style="padding: 30px 50px 20px 50px;">
               <p style="
                 font-family: 'Georgia', 'Times New Roman', serif;
                 font-size: 16px;
@@ -148,6 +189,24 @@ function getEmailTemplate(recipientEmail: string, otp: string): string {
                 We are thrilled to share this special moment with you. 
                 Your presence would make our celebration truly memorable.
                 Please click the button below to access your exclusive invitation.
+              </p>
+              ${guestNote}
+            </td>
+          </tr>
+
+          <!-- Dress Code Info -->
+          <tr>
+            <td align="center" style="padding: 0 60px 30px 60px;">
+              <p style="
+                font-family: 'Georgia', 'Times New Roman', serif;
+                font-size: 15px;
+                color: #E0C097;
+                line-height: 1.6;
+                margin: 0;
+                text-align: center;
+                font-style: italic;
+              ">
+                Please note: the colours of the day are chocolate brown fabric, paired with a gold gele (for women) or gold fila (for men).
               </p>
             </td>
           </tr>
@@ -279,12 +338,12 @@ function getEmailTemplate(recipientEmail: string, otp: string): string {
 export async function POST(request: Request) {
   try {
     const body = await request.json();
-    const { recipients } = body as { recipients?: string[] };
+    const { recipients } = body as { 
+      recipients?: (string | { email: string; plusOne?: boolean; total?: number })[] 
+    };
 
     const emailList = recipients || [
       "coutinhodacruz10@gmail.com",
-      "dominicrotimi@gmail.com",
-      "dehet28746@availors.com",
       "sylviaokonofua@gmail.com",
       "adepekun94@gmail.com",
       "Boonspaceca@gmail.com",
@@ -307,7 +366,12 @@ export async function POST(request: Request) {
     const results: { email: string; status: string; error?: string }[] = [];
 
     // Send emails to each recipient
-    for (const email of emailList) {
+    for (const item of emailList) {
+      const isString = typeof item === 'string';
+      const email = isString ? item : item.email;
+      const plusOne = isString ? false : (item.plusOne || false);
+      const total = isString ? 1 : (item.total || 1);
+
       try {
         const otp = generateOTP(email);
         await transporter.sendMail({
@@ -315,11 +379,11 @@ export async function POST(request: Request) {
           to: email,
           replyTo: process.env.EMAIL_REPLY || process.env.EMAIL_USER,
           subject: "💍 You're Invited to Timi & Sylvia's Wedding Celebration!",
-          html: getEmailTemplate(email, otp),
+          html: getEmailTemplate(email, otp, plusOne, total),
         });
 
         results.push({ email, status: "sent" });
-        console.log(`✅ Invitation sent successfully to: ${email}`);
+        console.log(`✅ Invitation sent successfully to: ${email} (Total: ${total})`);
       } catch (err: unknown) {
         const errorMessage = err instanceof Error ? err.message : "Unknown error";
         results.push({ email, status: "failed", error: errorMessage });

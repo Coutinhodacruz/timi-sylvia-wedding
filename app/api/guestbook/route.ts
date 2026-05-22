@@ -11,8 +11,11 @@ const transporter = nodemailer.createTransport({
     },
 });
 
-// File path for storing guestbook entries
-const GUESTBOOK_FILE = path.join(process.cwd(), 'data', 'guestbook.json');
+const isProduction = process.env.NODE_ENV === 'production';
+// In production (Vercel), process.cwd() is read-only, so we use /tmp to prevent 500 errors
+const GUESTBOOK_FILE = isProduction 
+    ? path.join('/tmp', 'guestbook.json') 
+    : path.join(process.cwd(), 'data', 'guestbook.json');
 
 // Ensure data directory exists
 function ensureDataDirectory() {
