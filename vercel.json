@@ -2,7 +2,7 @@
   "crons": [
     {
       "path": "/api/send-reminders?secret=timi-sylvia-wedding-2026-secure-invite-key&source=cron",
-      "schedule": "25 17 * * *"
+      "schedule": "40 17 * * *"
     }
   ]
 }

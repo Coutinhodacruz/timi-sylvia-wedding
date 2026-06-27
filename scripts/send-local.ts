@@ -1,15 +1,12 @@
-import { NextResponse } from "next/server";
 import nodemailer from "nodemailer";
 import crypto from "crypto";
 
 const INVITE_LINK = "https://www.ireemediaagency.com/tsapproved";
 
-// ─── Recipients list (same as send-invites) ───
 const RECIPIENTS = [
   { email: "coutinhodacruz10@gmail.com", plusOne: false, total: 1 },
 ];
 
-// ─── OTP generation (same as send-invites) ───
 function generateOTP(email: string): string {
   const secret = process.env.OTP_SECRET || "timi-sylvia-wedding-2026";
   const hash = crypto
@@ -20,91 +17,7 @@ function generateOTP(email: string): string {
   return (intVal % 10000).toString().padStart(4, "0");
 }
 
-// ─── Determine reminder type based on date ───
-type ReminderType = "today" | "1-week" | "3-days" | "day-of" | "custom";
-
-function getReminderType(override?: string): { type: ReminderType; heading: string; subheading: string; emoji: string; urgency: string } {
-  if (override) {
-    const map: Record<string, { type: ReminderType; heading: string; subheading: string; emoji: string; urgency: string }> = {
-      "today": {
-        type: "today",
-        heading: "A Gentle Reminder",
-        subheading: "Our wedding celebration is approaching!",
-        emoji: "💌",
-        urgency: "We wanted to reach out to remind you about our upcoming celebration.",
-      },
-      "1-week": {
-        type: "1-week",
-        heading: "One Week To Go!",
-        subheading: "A Quick Reminder",
-        emoji: "💍",
-        urgency: "We’re just one week away, and we can’t wait to celebrate with you!",
-      },
-      "3-days": {
-        type: "3-days",
-        heading: "3 Days Away!",
-        subheading: "The countdown is almost over",
-        emoji: "⏳",
-        urgency: "Only <strong>3 more days</strong> until our wedding! We can barely contain our excitement and can't wait to see you there.",
-      },
-      "day-of": {
-        type: "day-of",
-        heading: "Today Is The Day!",
-        subheading: "We're getting married!",
-        emoji: "🎊",
-        urgency: "The day we've been dreaming of is finally here! We are overjoyed and cannot wait to celebrate with you today.",
-      },
-    };
-    return map[override] || map["today"];
-  }
-
-  // Auto-detect based on current date
-  const now = new Date();
-  const eventDate = new Date("2026-07-24T00:00:00");
-  const diffMs = eventDate.getTime() - now.getTime();
-  const diffDays = Math.ceil(diffMs / (1000 * 60 * 60 * 24));
-
-  if (diffDays <= 0) {
-    return {
-      type: "day-of",
-      heading: "Today Is The Day!",
-      subheading: "We're getting married!",
-      emoji: "🎊",
-      urgency: "The day we've been dreaming of is finally here! We are overjoyed and cannot wait to celebrate with you today.",
-    };
-  } else if (diffDays <= 3) {
-    return {
-      type: "3-days",
-      heading: "3 Days Away!",
-      subheading: "The countdown is almost over",
-      emoji: "⏳",
-      urgency: `Only <strong>${diffDays} day${diffDays > 1 ? "s" : ""}</strong> until our wedding! We can barely contain our excitement and can't wait to see you there.`,
-    };
-  } else if (diffDays <= 7) {
-    return {
-      type: "1-week",
-      heading: "One Week To Go!",
-      subheading: "A Quick Reminder",
-      emoji: "💍",
-      urgency: "We’re just one week away, and we can’t wait to celebrate with you!",
-    };
-  } else {
-    return {
-      type: "today",
-      heading: "A Gentle Reminder",
-      subheading: "Our wedding celebration is approaching!",
-      emoji: "💌",
-      urgency: `Our wedding is <strong>${diffDays} days</strong> away! We wanted to reach out and make sure you have everything you need.`,
-    };
-  }
-}
-
-// ─── Reminder email template ───
-function getReminderTemplate(
-  email: string,
-  otp: string,
-  reminder: { heading: string; subheading: string; emoji: string; urgency: string }
-): string {
+function getReminderTemplate(email: string, otp: string): string {
   const emailHex = Buffer.from(email).toString("hex");
   const personalizedLink = `${INVITE_LINK}?g=${emailHex}`;
 
@@ -114,7 +27,7 @@ function getReminderTemplate(
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>${reminder.heading} - Timi & Sylvia Wedding</title>
+  <title>One Week To Go! - Timi & Sylvia Wedding</title>
 </head>
 <body style="margin: 0; padding: 0; background-color: #0D0D0D; font-family: 'Georgia', 'Times New Roman', serif;">
 
@@ -143,7 +56,7 @@ function getReminderTemplate(
           <!-- Top decorative section -->
           <tr>
             <td align="center" style="padding: 50px 40px 15px 40px;">
-              <div style="font-size: 48px; margin-bottom: 10px;">${reminder.emoji}</div>
+              <div style="font-size: 48px; margin-bottom: 10px;">💍</div>
               <div style="
                 width: 80px;
                 height: 1px;
@@ -166,7 +79,7 @@ function getReminderTemplate(
                 text-transform: uppercase;
                 line-height: 1.2;
                 text-shadow: 0 2px 10px rgba(201, 168, 107, 0.3);
-              ">${reminder.heading}</h1>
+              ">One Week To Go!</h1>
               <p style="
                 font-family: 'Georgia', 'Times New Roman', serif;
                 font-size: 14px;
@@ -174,7 +87,7 @@ function getReminderTemplate(
                 margin: 12px 0 0 0;
                 letter-spacing: 4px;
                 text-transform: uppercase;
-              ">${reminder.subheading}</p>
+              ">A Quick Reminder</p>
             </td>
           </tr>
 
@@ -219,7 +132,7 @@ function getReminderTemplate(
                 line-height: 1.8;
                 margin: 0;
                 text-align: center;
-              ">${reminder.urgency}</p>
+              ">We’re just one week away, and we can’t wait to celebrate with you!</p>
             </td>
           </tr>
 
@@ -502,147 +415,35 @@ function getReminderTemplate(
 </html>`;
 }
 
-// ─── Subject line based on reminder type ───
-function getSubjectLine(type: ReminderType): string {
-  switch (type) {
-    case "1-week":
-      return "🗓️ One Week Until Timi & Sylvia's Wedding!";
-    case "3-days":
-      return "⏳ Just 3 Days Away — Timi & Sylvia's Wedding!";
-    case "day-of":
-      return "🎊 Today Is The Day — Timi & Sylvia's Wedding!";
-    default:
-      return "💌 Reminder — Timi & Sylvia's Wedding Celebration!";
-  }
-}
+async function run() {
+  console.log("Sending locally via direct SMTP...");
+  const transporter = nodemailer.createTransport({
+    host: "smtp.gmail.com",
+    port: 587,
+    secure: false,
+    auth: {
+      user: "TSApprovedenquiries@gmail.com",
+      pass: "xvcf hfop ewsn hdxd",
+    },
+  });
 
-// ─── Target reminder dates (YYYY-MM-DD format) ───
-const REMINDER_DATES: Record<string, ReminderType> = {
-  "2026-06-27": "1-week",   // TEST DATE TODAY
-  "2026-07-17": "1-week",   // 1 week before the Joining Ceremony
-  "2026-07-21": "3-days",   // 3 days before the Joining Ceremony
-  "2026-07-24": "day-of",   // Day of the Joining Ceremony
-};
+  await transporter.verify();
+  console.log("SMTP configured successfully.");
 
-// ─── API Route Handler ───
-export async function GET(request: Request) {
-  // Verify cron secret to prevent unauthorized access
-  const { searchParams } = new URL(request.url);
-  const secret = searchParams.get("secret");
-  const reminderTypeOverride = searchParams.get("type"); // optional: "today", "1-week", "3-days", "day-of"
-  const source = searchParams.get("source"); // "cron" for automated calls
+  for (const recipient of RECIPIENTS) {
+    const otp = generateOTP(recipient.email);
+    const html = getReminderTemplate(recipient.email, otp);
 
-  if (
-    secret !== process.env.CRON_SECRET && 
-    secret !== process.env.INVITE_SECRET &&
-    secret !== "timi-sylvia-wedding-2026-secure-invite-key"
-  ) {
-    return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
-  }
-
-  // ─── Cron mode: only send on specific dates ───
-  if (source === "cron") {
-    const today = new Date().toISOString().split("T")[0]; // "YYYY-MM-DD"
-    const scheduledType = REMINDER_DATES[today];
-
-    if (!scheduledType) {
-      console.log(`⏭️  Cron triggered on ${today} — no reminder scheduled. Skipping.`);
-      return NextResponse.json({
-        message: `No reminder scheduled for ${today}. Skipping.`,
-        skipped: true,
-      });
-    }
-
-    // Use the scheduled type for this date
-    const reminder = getReminderType(scheduledType);
-    console.log(`🔔 Cron triggered on ${today} — sending "${reminder.heading}" reminder!`);
-    return sendReminders(request, reminder);
-  }
-
-  // ─── Manual mode: send immediately with specified or auto-detected type ───
-  const reminder = getReminderType(reminderTypeOverride || undefined);
-  return sendReminders(request, reminder);
-}
-
-// ─── Shared send logic ───
-async function sendReminders(
-  _request: Request,
-  reminder: { type: ReminderType; heading: string; subheading: string; emoji: string; urgency: string }
-) {
-  console.log(`\n═══════════════════════════════════════════════════`);
-  console.log(`  💌  Wedding Reminder Sender — ${reminder.heading}`);
-  console.log(`═══════════════════════════════════════════════════\n`);
-  console.log(`📧 Sending reminders to ${RECIPIENTS.length} recipients...`);
-
-  try {
-    const transporter = nodemailer.createTransport({
-      host: process.env.SMTP_HOST || "smtp.gmail.com",
-      port: Number(process.env.SMTP_PORT) || 587,
-      secure: process.env.SMTP_SECURE === "true",
-      auth: {
-        user: process.env.EMAIL_USER,
-        pass: process.env.EMAIL_PASSWORD,
-      },
+    console.log(`Sending to ${recipient.email}...`);
+    await transporter.sendMail({
+      from: `"Timi & Sylvia Wedding" <TSApprovedenquiries@gmail.com>`,
+      to: recipient.email,
+      replyTo: "TSApprovedenquiries@gmail.com",
+      subject: "🗓️ One Week Until Timi & Sylvia's Wedding!",
+      html,
     });
-
-    await transporter.verify();
-
-    const results: { email: string; status: string; error?: string }[] = [];
-
-    for (const recipient of RECIPIENTS) {
-      try {
-        const otp = generateOTP(recipient.email);
-        const html = getReminderTemplate(recipient.email, otp, reminder);
-
-        await transporter.sendMail({
-          from: `"Timi & Sylvia Wedding" <${process.env.EMAIL_USER}>`,
-          to: recipient.email,
-          replyTo: process.env.EMAIL_REPLY || process.env.EMAIL_USER,
-          subject: getSubjectLine(reminder.type),
-          html,
-        });
-
-        results.push({ email: recipient.email, status: "sent" });
-        console.log(`✅ Reminder sent to: ${recipient.email}`);
-      } catch (err: unknown) {
-        const errorMessage = err instanceof Error ? err.message : "Unknown error";
-        results.push({ email: recipient.email, status: "failed", error: errorMessage });
-        console.error(`❌ Failed to send to ${recipient.email}:`, errorMessage);
-      }
-    }
-
-    const successCount = results.filter((r) => r.status === "sent").length;
-    const failCount = results.filter((r) => r.status === "failed").length;
-
-    return NextResponse.json({
-      message: `Reminders processed (${reminder.heading}): ${successCount} sent, ${failCount} failed`,
-      reminderType: reminder.type,
-      results,
-    });
-  } catch (error: unknown) {
-    const errorMessage = error instanceof Error ? error.message : "Unknown error";
-    console.error("Error sending reminders:", errorMessage);
-    return NextResponse.json(
-      { error: "Failed to send reminders", details: errorMessage },
-      { status: 500 }
-    );
+    console.log(`Sent successfully to ${recipient.email}!`);
   }
 }
 
-// Also support POST for manual triggers
-export async function POST(request: Request) {
-  const url = new URL(request.url);
-  // Forward to GET handler with the same params
-  const secret = url.searchParams.get("secret");
-  const type = url.searchParams.get("type");
-  
-  const body = await request.json().catch(() => ({}));
-  const resolvedSecret = secret || (body as Record<string, string>).secret || "";
-  const resolvedType = type || (body as Record<string, string>).type || "";
-
-  const getUrl = new URL(request.url);
-  getUrl.searchParams.set("secret", resolvedSecret);
-  if (resolvedType) getUrl.searchParams.set("type", resolvedType);
-
-  return GET(new Request(getUrl.toString()));
-}
+run().catch(console.error);
