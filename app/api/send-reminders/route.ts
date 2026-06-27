@@ -7,6 +7,44 @@ const INVITE_LINK = "https://www.ireemediaagency.com/tsapproved";
 // ─── Recipients list (same as send-invites) ───
 const RECIPIENTS = [
   { email: "coutinhodacruz10@gmail.com", plusOne: false, total: 1 },
+  { email: "sylviaokonofua@gmail.com", plusOne: false, total: 1 },
+  { email: "adepekun94@gmail.com", plusOne: false, total: 1 },
+  { email: "Boonspaceca@gmail.com", plusOne: false, total: 1 },
+  { email: "Kemkomo34@yahoo.com", plusOne: true, total: 2 },
+  { email: "omorogieva81@gmail.com", plusOne: false, total: 1 },
+  { email: "divine.ogundare@gmail.com", plusOne: true, total: 2 },
+  { email: "djsolsax1@gmail.com", plusOne: true, total: 3 },
+  { email: "Ozii2011@yahoo.com", plusOne: true, total: 3 },
+  { email: "EgbeFelix97@gmail.com", plusOne: true, total: 2 },
+  { email: "Osuovester@gmail.com", plusOne: true, total: 2 },
+  { email: "detolamolayo@gmail.com", plusOne: true, total: 4 },
+  { email: "aaadedapo198@gmail.com", plusOne: false, total: 1 },
+  { email: "damiadedapo@gmail.com", plusOne: false, total: 1 },
+  { email: "dammy5ive@gmail.com", plusOne: false, total: 1 },
+  { email: "ivieojeaga@yahoo.com", plusOne: false, total: 1 },
+  { email: "oludipeolaide@gmail.com", plusOne: false, total: 1 },
+  { email: "koyejo.dare@gmail.com", plusOne: false, total: 1 },
+  { email: "kb-10@hotmail.com", plusOne: false, total: 1 },
+  { email: "deletope13@yahoo.com", plusOne: false, total: 1 },
+  { email: "Ritymore442@gmail.com", plusOne: false, total: 1 },
+  { email: "asma.musa62@yahoo.com", plusOne: false, total: 1 },
+  { email: "adedapoade18@gmail.com", plusOne: false, total: 1 },
+  { email: "adedapoife01@gmail.com", plusOne: false, total: 1 },
+  { email: "ogbawo@gmail.com", plusOne: false, total: 1 },
+  { email: "adedapotolu05@gmail.com", plusOne: false, total: 1 },
+  { email: "okoseme234@gmail.com", plusOne: false, total: 1 },
+  { email: "oladoyin24@hotmail.co.uk", plusOne: false, total: 1 },
+  { email: "Ruchilyon@icloud.com", plusOne: false, total: 1 },
+  { email: "osonia687@gmail.com", plusOne: false, total: 1 },
+  { email: "Sholasleek@gmail.com", plusOne: false, total: 1 },
+  { email: "gracemacbruce@gmail.com", plusOne: false, total: 1 },
+  { email: "Gwanezaniquese@gmail.com", plusOne: false, total: 1 },
+  { email: "Agbamu@stillwaterschools.org", plusOne: false, total: 1 },
+  { email: "Ekis50@yahoo.com", plusOne: true, total: 3 },
+  { email: "margaretakpedeye@gmail.com", plusOne: false, total: 1 },
+  { email: "olamideibuoye@gmail.com", plusOne: false, total: 1 },
+  { email: "olatunbosunadesoye@yahoo.com", plusOne: false, total: 1 },
+  { email: "manelubs@gmail.com", plusOne: false, total: 1 },
 ];
 
 // ─── OTP generation (same as send-invites) ───
@@ -518,7 +556,6 @@ function getSubjectLine(type: ReminderType): string {
 
 // ─── Target reminder dates (YYYY-MM-DD format) ───
 const REMINDER_DATES: Record<string, ReminderType> = {
-  "2026-06-27": "1-week",   // TEST DATE TODAY
   "2026-07-17": "1-week",   // 1 week before the Joining Ceremony
   "2026-07-21": "3-days",   // 3 days before the Joining Ceremony
   "2026-07-24": "day-of",   // Day of the Joining Ceremony
